@@ -6,4 +6,6 @@ citizen/system_resources/
 *.pdb
 *.exe
 *.json
+*.bat
+*.cmd
 server-data/icudtl.dat
