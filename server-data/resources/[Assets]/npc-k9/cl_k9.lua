@@ -11,18 +11,18 @@ local currentState = ""
 
 local PedList = {
 	-- Police --
-	`s_m_y_cop_01`,
-	`s_f_y_cop_01`,
+	"s_m_y_cop_01",
+	"s_f_y_cop_01",
 	-- Highway --
-	`s_m_y_hwaycop_01`,
+	"s_m_y_hwaycop_01",
 	-- Sheriff --
-	`s_m_y_sheriff_01`,
-	`s_f_y_sheriff_01`,
+	"s_m_y_sheriff_01",
+	"s_f_y_sheriff_01",
 	-- SWAT --
-	`s_m_y_swat_01`,
+	"s_m_y_swat_01",
 	-- Ranger --
-	`s_m_y_ranger_01`,
-	`s_f_y_ranger_01`,
+	"s_m_y_ranger_01",
+	"s_f_y_ranger_01",
 }
 
 local VehicleList = {
@@ -114,7 +114,7 @@ AddEventHandler("K9:Create", function(dogType)
 		end
 		local model
 
-		model = `a_c_chop`
+		model = "a_c_chop"
 		
 		RequestModel(model)
 		while not HasModelLoaded(model) do
