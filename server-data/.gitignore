@@ -8,4 +8,5 @@ citizen/system_resources/
 *.json
 *.bat
 *.cmd
+*.cfg
 server-data/icudtl.dat
