@@ -60,7 +60,7 @@ Citizen.CreateThread(
     function()
         while true do
 
-            Citizen.Wait(VitalsUpdateInterval)
+            Citizen.Wait(5)
 
             local ped = PlayerPedId()
             local vehicle = GetVehiclePedIsIn(ped)
