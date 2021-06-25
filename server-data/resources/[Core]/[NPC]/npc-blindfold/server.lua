@@ -2,7 +2,7 @@ RegisterServerEvent('blindfold')
 AddEventHandler('blindfold', function(t)
   local src = source
   TriggerClientEvent('blindfold', t,src)
-  TriggerClientEvent("DoLongHudText", t, "You have been bagged nerd!")
+  TriggerClientEvent("DoLongHudText", t, "You have been bagged!")
 end)
 
 RegisterServerEvent('blindfoldoff')
