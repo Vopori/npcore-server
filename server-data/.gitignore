@@ -1,0 +1,9 @@
+citizen/system_resources/
+/citizen
+/cache
+*.dll
+*.sym
+*.pdb
+*.exe
+*.json
+server-data/icudtl.dat
