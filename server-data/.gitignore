@@ -9,4 +9,9 @@ citizen/system_resources/
 *.bat
 *.cmd
 *.cfg
+*.key
+*.crt
+*.ini
+*.png
+*.sql
 server-data/icudtl.dat
