@@ -63,7 +63,7 @@ AddEventHandler("police:sport",function()
 	if (IsPedInAnyVehicle(PlayerPedId(), false)) then
 		local veh = GetVehiclePedIsIn(PlayerPedId(),false)
 		local Driver = GetPedInVehicleSeat(veh, -1)
-		local defaultHash = `2015POLSTANG`
+		local defaultHash = "2015POLSTANG"
 
 
 

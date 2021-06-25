@@ -196,7 +196,7 @@ RegisterNUICallback('toggleengine', function(data, cb)
     cb('ok')
 end)
 
- RegisterNUICallback('escape', function(data, cb)
+RegisterNUICallback('escape', function(data, cb)
     EnableGUI(false)
     cb('ok')
 end)
