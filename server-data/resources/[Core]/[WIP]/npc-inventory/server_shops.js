@@ -299,6 +299,17 @@ function recycle() {
     return JSON.stringify(shopItems);
 };
 
+function WhiteWidow() {
+    var shopItems = [
+        { item_id: "joint", id: 0, name: "Craft", information: "{}", slot: 1, amount: 50 },
+        { item_id: "blunt", id: 0, name: "Craft", information: "{}", slot: 2, amount: 5 },
+        { item_id: "cgummies", id: 0, name: "Craft", information: "{}", slot: 3, amount: 5 },
+        { item_id: "clotion", id: 0, name: "Craft", information: "{}", slot: 4, amount: 5 },
+        
+    ];
+    return JSON.stringify(shopItems);
+};
+
 
 function smelter() {
     var shopItems = [

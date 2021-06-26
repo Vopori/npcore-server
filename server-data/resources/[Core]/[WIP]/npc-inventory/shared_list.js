@@ -10172,6 +10172,125 @@ itemList["deer"] = {
     deg: false
 };
 
+//Hunting 
+
+itemList['huntingbait'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Bait',
+    price: 25,
+    weight: 1,
+    nonStack: false,
+    model: '',
+    image: 'np_huntingbait.png',
+    information: 'Smells like old fish and shoes',
+    deg: false,
+  };
+  
+  itemList['huntingcarcass1'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Carcass',
+    price: 1,
+    weight: 130,
+    nonStack: true,
+    model: '',
+    image: 'np_huntingcarcass1.png',
+    information: 'What is this? Did you shoot it with an AK?',
+    deg: false,
+  };
+  
+  itemList['huntingcarcass2'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Carcass',
+    price: 1,
+    weight: 130,
+    nonStack: true,
+    model: '',
+    image: 'np_huntingcarcass2.png',
+    information: 'Someone might pay a pretty penny for this',
+    deg: false,
+  };
+  
+  itemList['huntingcarcass3'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Carcass',
+    price: 1,
+    weight: 130,
+    nonStack: true,
+    model: '',
+    image: 'np_huntingcarcass3.png',
+    information: 'I am sure we can turn this in to something fancy',
+    deg: false,
+  };
+  
+  itemList['huntingcarcass4'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Carcass',
+    price: 1,
+    weight: 130,
+    nonStack: true,
+    model: '',
+    image: 'np_huntingcarcass4.png',
+    information: 'Hunting in the South Side are we?',
+    deg: false,
+  };
+
+  itemList['rpelt'] = {
+    fullyDegrades: false,
+    decayrate: 0.0,
+    displayname: 'Rabbit Pelt',
+    price: 1,
+    weight: 50,
+    nonStack: false,
+    model: '',
+    image: 'np_rabbit-pelt.png',
+    information: 'Magdumping ruins the pelt',
+    deg: false,
+  };
+
+  itemList['huntingpelt1'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Pelt Tier 1',
+    price: 1,
+    weight: 50,
+    nonStack: false,
+    model: '',
+    image: 'np_huntingpelt.png',
+    information: 'This used to keep an animal warm in the winter! You ANIMAL!',
+    deg: false,
+  };
+
+  itemList['huntingpelt2'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Pelt Tier 2',
+    price: 1,
+    weight: 50,
+    nonStack: false,
+    model: '',
+    image: 'np_huntingpelt.png',
+    information: 'This used to keep an animal warm in the winter! You ANIMAL!',
+    deg: false,
+  };
+
+  itemList['huntingpelt3'] = {
+    fullyDegrades: true,
+    decayrate: 0.02,
+    displayname: 'Animal Pelt Tier 3',
+    price: 1,
+    weight: 50,
+    nonStack: false,
+    model: '',
+    image: 'np_huntingpelt.png',
+    information: 'This used to keep an animal warm in the winter! You ANIMAL!',
+    deg: false,
+};
+
 // FISHING
 itemList['fishingrod'] = {
     fullyDegrades: false,
