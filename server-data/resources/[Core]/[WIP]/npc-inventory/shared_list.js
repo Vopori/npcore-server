@@ -10182,7 +10182,7 @@ itemList['huntingbait'] = {
     weight: 1,
     nonStack: false,
     model: '',
-    image: 'huntingbait.png',
+    image: 'np_huntingbait.png',
     information: 'Smells like old fish and shoes',
     deg: false,
   };
@@ -10195,7 +10195,7 @@ itemList['huntingbait'] = {
     weight: 130,
     nonStack: true,
     model: '',
-    image: 'huntingcarcass1.png',
+    image: 'np_huntingcarcass1.png',
     information: 'What is this? Did you shoot it with an AK?',
     deg: false,
   };
@@ -10208,7 +10208,7 @@ itemList['huntingbait'] = {
     weight: 130,
     nonStack: true,
     model: '',
-    image: 'huntingcarcass2.png',
+    image: 'np_huntingcarcass2.png',
     information: 'Someone might pay a pretty penny for this',
     deg: false,
   };
@@ -10221,7 +10221,7 @@ itemList['huntingbait'] = {
     weight: 130,
     nonStack: true,
     model: '',
-    image: 'huntingcarcass3.png',
+    image: 'np_huntingcarcass3.png',
     information: 'I am sure we can turn this in to something fancy',
     deg: false,
   };
@@ -10234,7 +10234,7 @@ itemList['huntingbait'] = {
     weight: 130,
     nonStack: true,
     model: '',
-    image: 'huntingcarcass4.png',
+    image: 'np_huntingcarcass4.png',
     information: 'Hunting in the South Side are we?',
     deg: false,
   };
@@ -10247,7 +10247,7 @@ itemList['huntingbait'] = {
     weight: 50,
     nonStack: false,
     model: '',
-    image: 'rabbit-pelt.png',
+    image: 'np_rabbit-pelt.png',
     information: 'Magdumping ruins the pelt',
     deg: false,
   };
@@ -10260,7 +10260,7 @@ itemList['huntingbait'] = {
     weight: 50,
     nonStack: false,
     model: '',
-    image: 'huntingpelt.png',
+    image: 'np_huntingpelt.png',
     information: 'This used to keep an animal warm in the winter! You ANIMAL!',
     deg: false,
   };
@@ -10273,7 +10273,7 @@ itemList['huntingbait'] = {
     weight: 50,
     nonStack: false,
     model: '',
-    image: 'huntingpelt.png',
+    image: 'np_huntingpelt.png',
     information: 'This used to keep an animal warm in the winter! You ANIMAL!',
     deg: false,
   };
@@ -10286,7 +10286,7 @@ itemList['huntingbait'] = {
     weight: 50,
     nonStack: false,
     model: '',
-    image: 'huntingpelt.png',
+    image: 'np_huntingpelt.png',
     information: 'This used to keep an animal warm in the winter! You ANIMAL!',
     deg: false,
 };
