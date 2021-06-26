@@ -2100,9 +2100,9 @@ end)
 -- this should just use nui instead of drawrect - it literally ass fucks usage.
 Citizen.CreateThread(function()
 	local minimap = RequestScaleformMovie("minimap")
-    SetRadarBigmapEnabled(false, false)
+	SetRadarBigmapEnabled(true, false)
     Wait(0)
-    SetRadarBigmapEnabled(false, false)
+	SetRadarBigmapEnabled(false, true)
 
 
 	local counter = 0
@@ -2194,26 +2194,26 @@ Citizen.CreateThread(function()
 
 		counter = counter - 1
 
-		if get_ped_veh ~= 0 then
-            local model = GetEntityModel(get_ped_veh)
-            local roll = GetEntityRoll(get_ped_veh)
+		-- if get_ped_veh ~= 0 then
+        --     local model = GetEntityModel(get_ped_veh)
+        --     local roll = GetEntityRoll(get_ped_veh)
   
-            -- if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and IsEntityInAir(get_ped_veh) or (roll < -50 or roll > 50) then
-            --     DisableControlAction(0, 59) -- leaning left/right
-            --     DisableControlAction(0, 60) -- leaning up/down
-            -- end
+        --     -- if not IsThisModelABoat(model) and not IsThisModelAHeli(model) and not IsThisModelAPlane(model) and IsEntityInAir(get_ped_veh) or (roll < -50 or roll > 50) then
+        --     --     DisableControlAction(0, 59) -- leaning left/right
+        --     --     DisableControlAction(0, 60) -- leaning up/down
+        --     -- end
 
-            if GetPedInVehicleSeat(GetVehiclePedIsIn(get_ped, false), 0) == get_ped then
-                if GetIsTaskActive(get_ped, 165) then
-                    SetPedIntoVehicle(get_ped, GetVehiclePedIsIn(get_ped, false), 0)
-                end
-            end
+        --     if GetPedInVehicleSeat(GetVehiclePedIsIn(get_ped, false), 0) == get_ped then
+        --         if GetIsTaskActive(get_ped, 165) then
+        --             SetPedIntoVehicle(get_ped, GetVehiclePedIsIn(get_ped, false), 0)
+        --         end
+        --     end
 
-            DisplayRadar(1)
-            SetRadarZoom(1000)
-        else
-            DisplayRadar(0)
-        end
+        --     DisplayRadar(1)
+        --     SetRadarZoom(1000)
+        -- else
+        --     DisplayRadar(0)
+        -- end
 
         BeginScaleformMovieMethod(minimap, "SETUP_HEALTH_ARMOUR")
         ScaleformMovieMethodAddParamInt(3)
