@@ -54,11 +54,11 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
             if data[_] ~= nil then 
                 character = data[_]
 
-                local gender = `mp_male`
+                local gender = "mp_male"
 
                 if character.gender == 1 then
                     cModelHash = GetHashKey("mp_f_freemode_01")
-                    gender = `mp_female`
+                    gender = "mp_female"
                 else
                     cModelHash = GetHashKey("mp_m_freemode_01")
                     

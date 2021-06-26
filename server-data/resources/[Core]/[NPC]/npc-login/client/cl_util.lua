@@ -8,7 +8,7 @@ tattooHashList = nil
 function Login.LoadPed(ped, data, model)
     SetClothing(ped, data.drawables, data.props, data.drawtextures, data.proptextures)
     Citizen.Wait(500)
-    if (model == `mp_f_freemode_01` or model == `mp_m_freemode_01`) then
+    if (model == "mp_f_freemode_01" or model == "mp_m_freemode_01") then
         SetPedHeadBlend(ped, data.headBlend)
         SetHeadStructure(ped, data.headStructure)
         SetHeadOverlayData(ped, data.headOverlay)
@@ -16,7 +16,6 @@ function Login.LoadPed(ped, data, model)
     end
     return
 end
-
 
 function SetClothing(ped,drawables, props, drawTextures, propTextures)
     for i = 1, #drawable_names do
@@ -45,7 +44,6 @@ function SetClothing(ped,drawables, props, drawTextures, propTextures)
             propTextures[i][2], true)
     end
 end
-
 
 function SetPedHeadBlend(ped,data)
     SetPedHeadBlendData(ped,
@@ -105,7 +103,6 @@ function Lerp(a, b, t)
 end
 
 function LocationInWorld(coords,camera)
-
     local position = GetCamCoord(camera)
 
     --- Getting Object using raycast
@@ -114,7 +111,6 @@ function LocationInWorld(coords,camera)
     local retval, hit, endCoords, surfaceNormal, entity = GetShapeTestResult(raycast)
     
     return entity
-
 end
 
 function SetSkin(model, setDefault)
@@ -132,7 +128,7 @@ function SetSkin(model, setDefault)
         player = GetPlayerPed(-1)
         FreezePedCameraRotation(player, true)
         
-        if (model ~= `mp_f_freemode_01` and model ~= `mp_m_freemode_01`) then
+        if (model ~= "mp_f_freemode_01" and model ~= "mp_m_freemode_01") then
             SetPedRandomComponentVariation(GetPlayerPed(-1), true)
         else
             SetPedHeadBlendData(player, 0, 0, 0, 15, 0, 0, 0, 1.0, 0, false)
@@ -148,11 +144,9 @@ function SetSkin(model, setDefault)
             SetPedHeadOverlay(player, 1, 0, 0.0)
             SetPedHairColor(player, 1, 1)
         end
-        
     end
     SetEntityInvincible(PlayerPedId(),false)
 end
-
 
 function Login.RequestModel(model, callback)
     CreateThread(function()
@@ -223,7 +217,6 @@ function canPedBeUsed(ped)
     end
     return true
 end
-
 
 function Spawn.obtainApartmentType(spawnInfo)
     local found = false
