@@ -19,12 +19,10 @@ Citizen.CreateThread(function()
     end
 end)
 
-
 RegisterNetEvent('veh:options')
 AddEventHandler('veh:options', function()
     EnableGUI(true)
 end)
-
 
 Citizen.CreateThread(function()
     while true do
@@ -42,7 +40,6 @@ end)
 
 function EnableGUI(enable)
     enabled = enable
-
     SetNuiFocus(enable, enable)
 
     SendNUIMessage({
@@ -196,7 +193,7 @@ RegisterNUICallback('toggleengine', function(data, cb)
     cb('ok')
 end)
 
- RegisterNUICallback('escape', function(data, cb)
+RegisterNUICallback('escape', function(data, cb)
     EnableGUI(false)
     cb('ok')
 end)

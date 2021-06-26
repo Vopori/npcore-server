@@ -89,7 +89,6 @@ $(function () {
                     checkElement(settings, $(v), 'windowl2');
             });
 
-
             // setup engine
             // $('.engine').parent().addClass('disabled');
             $('.engine').parent().removeClass('active');
@@ -107,7 +106,7 @@ $(function () {
     $('.door').on('click', function() {
         if ($(this).parent().hasClass('disabled')) return;
         var doorIndex = $(this).attr('value');
-        $.post('http://npc-raid-car-menu/openDoor', JSON.stringify({
+        $.post('https://npc-raid-car-menu/openDoor', JSON.stringify({
                 doorIndex: doorIndex
             })
         );
@@ -115,7 +114,7 @@ $(function () {
 
     $('.seat').on('click', function() {
         var seatIndex = $(this).attr('value');
-        $.post('http://npc-raid-car-menu/switchSeat', JSON.stringify({
+        $.post('https://npc-raid-car-menu/switchSeat', JSON.stringify({
                 seatIndex: seatIndex
             })
         );
@@ -123,7 +122,7 @@ $(function () {
 
     $('.window').on('click', function() {
         var windowIndex = $(this).attr('value');
-        $.post('http://npc-raid-car-menu/togglewindow', JSON.stringify({
+        $.post('https://npc-raid-car-menu/togglewindow', JSON.stringify({
                 windowIndex: windowIndex
             })
         );
@@ -131,7 +130,7 @@ $(function () {
 
     $('.engine').on('click', function() {
         if ($(this).parent().hasClass('disabled')) return;
-        $.post('http://npc-raid-car-menu/toggleengine', JSON.stringify({}));
+        $.post('https://npc-raid-car-menu/toggleengine', JSON.stringify({}));
     });
 
     document.onkeyup = function (data) {
@@ -142,7 +141,7 @@ $(function () {
                 data.which == 27
             ) {
                 // Z or Esc
-                $.post('http://npc-raid-car-menu/escape', JSON.stringify({}));
+                $.post('https://npc-raid-car-menu/escape', JSON.stringify({}));
             }
         }
     };
