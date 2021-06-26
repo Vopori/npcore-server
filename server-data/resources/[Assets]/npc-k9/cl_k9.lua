@@ -928,7 +928,6 @@ function laydown(entity)
 
 end
 
--- -1592533895
 
 --[[ EXTRA FUNCTIONS ]]--
 function CheckVehicleRestriction(vehicle)
