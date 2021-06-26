@@ -8,7 +8,6 @@ citizen/system_resources/
 *.json
 *.bat
 *.cmd
-*.cfg
 *.key
 *.crt
 *.ini
