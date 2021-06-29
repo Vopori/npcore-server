@@ -4,7 +4,6 @@ AddEventHandler('npc-stash:fetchInitialState', function()
 	  TriggerClientEvent('npc-stash:setInitialState', source, Config.Stash)
 end)
 
-
 RegisterServerEvent('stashesaddtoconfig')
 AddEventHandler('stashesaddtoconfig', function(coords, pin, id, distance)
     local source = source
@@ -22,7 +21,7 @@ AddEventHandler('stashesaddtoconfig', function(coords, pin, id, distance)
         file:close()
 
     else
-        TriggerClientEvent('DoLongHudText', source, 'Cannot Do This Action', 2)
+        TriggerClientEvent('DoLongHudText', source, 'Cannot perform this action.', 2)
     end
 end)
 
@@ -31,7 +30,7 @@ function round2(num, numDecimalPlaces)
 end
 
 function DeleteString(path, before)
-    local inf = assert(io.open(path, "r+"), "Failed to open input file")
+    local inf = assert(io.open(path, "r+"), "Failed to open input file.")
     local lines = ""
     while true do
         local line = inf:read("*line")
@@ -44,3 +43,4 @@ function DeleteString(path, before)
     file:write(lines)
     file:close()
 end
+

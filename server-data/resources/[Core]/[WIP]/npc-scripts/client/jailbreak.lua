@@ -337,13 +337,13 @@ function runEscape()
           DrawMarkerRad(27,1643.5603027344,2585.4670410156,44.764853668213, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           DrawMarkerRad(27,1636.2059326172,2565.4235839844,44.76485748291, 0, 0, 0, 0, 0, 0, 1.01, 1.01, 0.3, 255, 255, 0, 60, 0, 0, 2, 0, 0, 0, 0)
           if #(vector3(1643.5603027344,2585.4670410156,45.564853668213) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["npc-base"]:getModule("Util"):MissionText("Enter Court Yard", 500)
+            exports["npc-core"]:getModule("Util"):MissionText("Enter Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1636.2059326172,2565.4235839844,45.56485748291)
             end
           elseif #(vector3(1636.2059326172,2565.4235839844,45.56485748291) - GetEntityCoords(PlayerPedId())) < 1 then
-            exports["npc-base"]:getModule("Util"):MissionText("Exit Court Yard", 500)
+            exports["npc-core"]:getModule("Util"):MissionText("Exit Court Yard", 500)
             if not teleported then
               teleported = true
               SetEntityCoords(PlayerPedId(),1643.5603027344,2585.4670410156,45.564853668213)
@@ -722,9 +722,9 @@ AddEventHandler('swappingCharsLoop', function()
     TransitionToBlurred(500)
     DoScreenFadeOut(500)
     Citizen.Wait(1000)
-    TriggerEvent("npc-base:clearStates")
+    TriggerEvent("npc-core:clearStates")
     imjailed = false
-    TriggerEvent("npc-base:spawnInitialized")
+    TriggerEvent("npc-core:spawnInitialized")
     Citizen.Wait(1000)
 	DoScreenFadeIn(1500)
 end)

@@ -540,13 +540,13 @@ AddEventHandler('isPed:UpdateCash', function(newCash)
   cash = newCash
 end)
 
-RegisterNetEvent('npc-base:addedMoney')
-AddEventHandler('npc-base:addedMoney', function(blah,amount)
+RegisterNetEvent('npc-core:addedMoney')
+AddEventHandler('npc-core:addedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 
-RegisterNetEvent('npc-base:removedMoney')
-AddEventHandler('npc-base:removedMoney', function(blah,amount)
+RegisterNetEvent('npc-core:removedMoney')
+AddEventHandler('npc-core:removedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 

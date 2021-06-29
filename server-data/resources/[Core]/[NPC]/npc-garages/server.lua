@@ -73,7 +73,7 @@ local jobPlates = {}
 -- Jobs
 AddEventHandler('garages:addJobPlate', function(plate)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	local job = user:getVar("job") or "Unemployed"
 	local msg = "10-74 (Negative) Name: " .. character.first_name .. " " .. character.last_name .. " Phone #: " .. character.phone_number .. " Job: " .. job
@@ -82,7 +82,7 @@ end)
 
 AddEventHandler('garages:getVehicleList', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM characters_cars WHERE cid = @cid', { ['@cid'] = char.id }, function(vehicles)
 		local v = vehicles[1]
@@ -109,7 +109,7 @@ end
 -- RegisterServerEvent('garages:loginKeyRequest')
 -- AddEventHandler('garages:loginKeyRequest', function(srcPassed)
 -- 	local src = tonumber(srcPassed)
--- 	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+-- 	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 -- 	local character = user:getCurrentCharacter()
 -- 	local state = "Out"
 -- 	exports.ghmattimysql:execute("SELECT license_plate FROM characters_cars WHERE vehicle_state = @state AND cid = @cid",{  ['state'] = state, ["cid"} = character.id}, function(result)
@@ -130,7 +130,7 @@ end
 -- Player Garage Manager
 -- AddEventHandler('garages:PutVehInGarages', function())
 -- 	local src = tonumber(srcPassed)
--- 	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+-- 	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 -- 	local character = user:getCurrentCharacter()
 -- 	local player = user:getVar("hexid")
 -- 	local state = "In"
@@ -185,7 +185,7 @@ end)
 
 AddEventHandler('updateVehicle', function(vehicleMods,plate)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	if not user then return end
 	local char = user:getCurrentCharacter()
 	if not char then return end
@@ -198,7 +198,7 @@ end)
 
 AddEventHandler("garages:CheckGarageForVeh", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local owner = char.id
 
@@ -211,7 +211,7 @@ end)
 
 AddEventHandler("garages:SetVehIn",function(plate, garage, fuel)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local owner = char.id
 	local state = "In"
@@ -220,7 +220,7 @@ end)
 
 AddEventHandler('garages:SetVehOut', function(vehicle, plate)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local owner = char.id
 	local state = "Out"
@@ -229,7 +229,7 @@ AddEventHandler('garages:SetVehOut', function(vehicle, plate)
 
   AddEventHandler('garages:CheckForVeh', function()
 	local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local state = "Out"
 
@@ -252,7 +252,7 @@ AddEventHandler('garages:SetVehOut', function(vehicle, plate)
 
 AddEventHandler('garages:CheckForSpawnVeh', function(veh_id, garageCost)
 	local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local owner = char.id
 	local veh_id = veh_id
@@ -273,7 +273,7 @@ end)
 RegisterServerEvent('ImpoundLot')
 AddEventHandler('ImpoundLot', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	user:removeMoney(500)
 end)
@@ -329,7 +329,7 @@ end)
 
 AddEventHandler('garages:SelVehJudge', function(plate)
 	local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local owner = char.id
 	
@@ -352,7 +352,7 @@ end)
 
 AddEventHandler('garages:SelHotVeh', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	
 	local player = user:getVar("hexid")
@@ -372,7 +372,7 @@ end)
 RegisterServerEvent('garages:SellToPlayer')
 AddEventHandler('garages:SellToPlayer', function(price,plate,player)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 
 	local state = "Out"
@@ -388,7 +388,7 @@ end)
 
 AddEventHandler('garages:SellVeh', function(plate)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 
 	local player = user:getVar("hexid")
@@ -411,11 +411,11 @@ RegisterServerEvent('garages:SellToPlayerEnd')
 AddEventHandler('garages:SellToPlayerEnd', function(plate,target,price)
 	local src = source
 	local target = tonumber(target)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	local player = user:getVar("hexid")
 	if src == target then return end
-	local userTarg = exports["npc-base"]:getModule("Player"):GetUser(target)
+	local userTarg = exports["npc-core"]:getModule("Player"):GetUser(target)
 	local characterTarg = userTarg:getCurrentCharacter()
 	local playerID = userTarg:getVar("hexid")
 	local targetCid = characterTarg.id
@@ -429,7 +429,7 @@ AddEventHandler('garages:SellToPlayerEnd', function(plate,target,price)
 				user:addMoney(price)
 				exports.ghmattimysql:execute("UPDATE characters_cars SET cid=@targetcid, phone_number=@phone_number WHERE license_plate = @plate AND cid = @cid",
 				{['targetCid'] = targetCid, ['plate'] = plate, ["cid"] = character.id, ['phone_number'] = phune_number })
-					exports["npc-base"]:AddLog("Vehicle Transfer", user, "Char "..character.id.." Sold a vehicle [" .. plate .. "] to Char" .. targetCid.." for"..price)
+					exports["npc-core"]:AddLog("Vehicle Transfer", user, "Char "..character.id.." Sold a vehicle [" .. plate .. "] to Char" .. targetCid.." for"..price)
 					TriggerClientEvent('garages:ClientEnd',src,plate)
 					TriggerClientEvent('garages:PlayerEnd',target,plate)
 					TriggerClientEvent("DoLongHudText",src, "Sold",1)
@@ -496,7 +496,7 @@ end)
 RegisterServerEvent("upgradeAttempt:illegalparts")
 AddEventHandler("upgradeAttempt:illegalparts", function(partnum,Lplate)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 
 	if partnum == 1 then
 		theVar = "Extractors"

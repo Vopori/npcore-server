@@ -11,7 +11,7 @@ end)
 RegisterServerEvent('trucker:jobFinished')
 AddEventHandler('trucker:jobFinished', function(job)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
       user:addMoney(math.random(84,96))
   TriggerClientEvent("DoLongHudText", src, "Thanks Man, Money Will Be Left On The Counter!")
     exports.ghmattimysql:execute("UPDATE delivery_job SET active = @active WHERE id = @id", {

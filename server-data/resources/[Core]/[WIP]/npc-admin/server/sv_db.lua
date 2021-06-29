@@ -40,7 +40,7 @@ function NPC.Admin.DB.UnbanSteamId(steamid)
 end
 
 function NPC.Admin.DB.IsPlayerBanned(target, callback)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(target)
     local steamid = user:getVar("hexid")
 
     local q = [[SELECT * FROM user_bans WHERE steam_id = @id LIMIT 1;]]

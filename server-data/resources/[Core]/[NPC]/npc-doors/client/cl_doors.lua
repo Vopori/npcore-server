@@ -427,7 +427,7 @@ end)
 
 function OpenCheck(curClosestNum)
     local gangType = exports["isPed"]:isPed("gang")
-    local job = exports["npc-base"]:getModule("LocalPlayer"):getVar("job")
+    local job = exports["npc-core"]:getModule("LocalPlayer"):getVar("job")
 
 
     if (isCop or isJudge or job == "district attorney" or hasSteamIdKeys) and (curClosestNum == 146 or curClosestNum == 147) then

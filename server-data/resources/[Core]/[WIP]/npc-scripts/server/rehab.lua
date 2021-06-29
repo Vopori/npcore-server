@@ -1,6 +1,6 @@
 RegisterCommand('rehab', function(source, args)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 
     if user:getVar("job") == 'therapist' or user:getVar("job") == 'doctor' then
         if args[1] then

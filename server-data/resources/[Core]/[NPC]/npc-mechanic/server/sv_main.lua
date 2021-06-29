@@ -51,12 +51,12 @@ end)
 RegisterServerEvent("transfer:attempt:send")
 AddEventHandler("transfer:attempt:send", function(plate, target)
     local pSrc = source
-    local pUser = exports["npc-base"]:getModule("Player"):GetUser(pSrc)
+    local pUser = exports["npc-core"]:getModule("Player"):GetUser(pSrc)
     local pChar = pUser:getCurrentCharacter().id
     local pSteam = GetPlayerIdentifiers(pSrc)[1]
 
     -- target shit
-    local tUser = exports["npc-base"]:getModule("Player"):GetUser(target)
+    local tUser = exports["npc-core"]:getModule("Player"):GetUser(target)
     local tChar = tUser:getCurrentCharacter().id
     local tSteam = GetPlayerIdentifiers(target)[1]
 

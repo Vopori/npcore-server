@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 games { 'gta5' }
 
-description 'NPC-Based-Scripts'
+description 'npc-cored-Scripts'
 version '1.0.0'
 
 this_is_a_map "yes"
@@ -163,7 +163,7 @@ exports {
 }
 
 dependencies {
-	"npc-base",
+	"npc-core",
 	"ghmattimysql",
 	--"connectqueue",
 	"PolyZone"

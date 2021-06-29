@@ -48,7 +48,7 @@ RegisterServerEvent('npc-fish:sellSushi')
 AddEventHandler('npc-fish:sellSushi', function(money)
     local source = source
     local player = GetPlayerName(source)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     if money ~= nil then
         user:addMoney(money)
         if money > 51 then
@@ -60,7 +60,7 @@ end)
 RegisterServerEvent("npc-fish:retreive:license")
 AddEventHandler("npc-fish:retreive:license", function()
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
     exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Fishing", "1"}, function(data)
 		if data[1] then

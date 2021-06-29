@@ -142,8 +142,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
-
 Citizen.CreateThread(function()
     while true do
         Citizen.Wait(4)
@@ -178,7 +176,6 @@ Citizen.CreateThread(function()
     end
 end)
 
-
 function secureWareHouseleave()
     isinstash = false
     DeleteObject(warehouse)
@@ -199,7 +196,6 @@ function DrawText3Ds(x, y, z, text)
     local factor = (string.len(text)) / 370
     DrawRect(_x, _y + 0.0125, 0.015 + factor, 0.03, 41, 11, 41, 68)
 end
-
 
 RegisterCommand('stashadd', function(source,args)
     local plycoords = GetEntityCoords(PlayerPedId())

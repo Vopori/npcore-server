@@ -512,7 +512,7 @@ function cmd.Init()
     cmd.vars.cloakedVeh = {}
 
     if IsDuplicityVersion() then 
-        AddEventHandler("npc-base:characterLoaded", function(user, char)
+        AddEventHandler("npc-core:characterLoaded", function(user, char)
             local src = user:getVar("source")
             TriggerClientEvent("npc-admin:Cloak", src, cmd.vars.cloaked)
         end)
@@ -708,7 +708,7 @@ function cmd.RunCommand(caller, args)
     if not args.message then return end
     local src = caller:getVar("source")
     TriggerClientEvent("npc-admin:runSpawnCommand",src,args.message)
-    exports["npc-base"]:AddLog("Admin", caller, "Spawned car", {car = tostring(args.message)}) 
+    exports["npc-core"]:AddLog("Admin", caller, "Spawned car", {car = tostring(args.message)}) 
     NPC.Admin:Log(log, caller)
 end
 
@@ -798,7 +798,7 @@ function cmd.RunCommand(caller, args)
     if not args.amount then args.amount = 1 end
     local src = caller:getVar("source")
     TriggerClientEvent('player:receiveItem', src, args.message, args.amount)
-    exports["npc-base"]:AddLog("Admin", caller, "Spawned item", {item = tostring(args.message),amount = tostring(args.amount)}) 
+    exports["npc-core"]:AddLog("Admin", caller, "Spawned item", {item = tostring(args.message),amount = tostring(args.amount)}) 
     NPC.Admin:Log(log, caller)
 end
 
@@ -864,7 +864,7 @@ function cmd.RunCommand(caller, args)
 
     TriggerClientEvent("weather:blackout",src,args.blackout)
 
-    exports["npc-base"]:AddLog("Admin", caller, "Changed weather/time/Cycle", {time = args.time, weather = args.weather, light = args.light, blackout = args.blackout}) 
+    exports["npc-core"]:AddLog("Admin", caller, "Changed weather/time/Cycle", {time = args.time, weather = args.weather, light = args.light, blackout = args.blackout}) 
 
      local log = string.format("%s [%s] Changed weather/time/Cycle: %s", caller:getVar("name"), caller:getVar("steamid"), json.encode({time = args.time, weather = args.weather, light = args.light, blackout = args.blackout}))
     NPC.Admin:Log(log, caller)
@@ -939,7 +939,7 @@ function cmd.RunCommand(caller, args)
     if not args.message then return end
     local src = caller:getVar("source")
     TriggerClientEvent('raid_clothes:AdminSetModel', src, args.message)
-    exports["npc-base"]:AddLog("Admin", caller, "Set Model", {item = tostring(args.message)}) 
+    exports["npc-core"]:AddLog("Admin", caller, "Set Model", {item = tostring(args.message)}) 
     NPC.Admin:Log(log, caller)
 end
 
@@ -1438,7 +1438,7 @@ NPC.Admin:AddCommand(cmd)
         if not NPC.Admin:IsValidUser(target) then return end
 
         local args = {
-            target = exports["npc-base"]:getModule("Player"):getUser(target),
+            target = exports["npc-core"]:getModule("Player"):getUser(target),
             rank = rank
         }
 

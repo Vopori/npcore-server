@@ -41,7 +41,7 @@ end)
 RegisterServerEvent('carshop:requesttable')
 AddEventHandler('carshop:requesttable', function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local display = exports.ghmattimysql:execute('SELECT * FROM vehicle_display')    
     for k,v in pairs(display) do
         carTable[v.id] = v
@@ -54,7 +54,7 @@ end)
 -- Check if player has enough money
 RegisterServerEvent('CheckMoneyForVeh')
 AddEventHandler('CheckMoneyForVeh', function(name, model,price,financed)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     local money = tonumber(user:getCash())
     if financed then
         local financedPrice = math.ceil(price / 3)
@@ -81,7 +81,7 @@ end)
 RegisterServerEvent('BuyForVeh')
 AddEventHandler('BuyForVeh', function(platew, name, vehicle, price, financed)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
     exports.ghmattimysql:execute("SELECT * FROM `characters_cars` WHERE license_plate = @license_plate", {['license_plate'] = platew}, function(result)
@@ -147,7 +147,7 @@ AddEventHandler('car:dopayment', function(vehicleplate)
 end)
 
 function PayVehicleFinance(vehicleplate)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     local char = user:getVar("character")
     local player = user:getVar("hexid")
 
@@ -175,7 +175,7 @@ end
 RegisterServerEvent("veh_shop:repo")
 AddEventHandler("veh_shop:repo", function(plate)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local cid = user:getVar("character").id
     local job = user:getVar("Job")
     if job == 'car_shop' then
@@ -214,7 +214,7 @@ end)
 RegisterServerEvent("veh_shop:release:vehicle")
 AddEventHandler("veh_shop:release:vehicle", function(ServerID, plate)
     local SrcID = tonumber(ServerID)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(SrcID)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(SrcID)
     local cid = user:getVar("character").id
     exports.ghmattimysql:execute("UPDATE characters_cars SET repoed = @repoed, vehicle_state = @vehicle_state WHERE license_plate = @license_plate",{
         ['license_plate'] = plate,

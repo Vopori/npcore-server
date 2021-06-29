@@ -41,7 +41,7 @@ end)
 
 RegisterServerEvent("admin:search")
 AddEventHandler("admin:search", function(pSrc, tSrc)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(tSrc)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(tSrc)
     local cid = user:getCurrentCharacter().id
     TriggerClientEvent("server-inventory-open", pSrc, "1", 'ply-'..cid)
 end)
@@ -66,7 +66,7 @@ end)
 RegisterServerEvent('npc-admin:AddPlayer')
 AddEventHandler("npc-admin:AddPlayer", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     if user ~= false then
         local licenses
         local identifiers, steamIdentifier = GetPlayerIdentifiers(source)
@@ -172,7 +172,7 @@ end
 
 RegisterServerEvent('admin:setGroup')
 AddEventHandler('admin:setGroup', function(pSrc, target, rank)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(target)
     local hexId = user:getVar("hexid")
     exports.ghmattimysql:execute("UPDATE users SET `rank` = @rank WHERE `hex_id` = @hex_id", {
         ['rank'] = rank, 
@@ -188,10 +188,10 @@ AddEventHandler("server:enablehuddebug", function(enable)
     debug = not debug
     local src = source
     if debug then
-        exports["npc-base"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Enabled")}) 
+        exports["npc-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Enabled")}) 
         TriggerClientEvent('hud:enabledebug', src)
     else
-        exports["npc-base"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Disabled")}) 
+        exports["npc-core"]:AddLog("Admin", GetPlayerName(src), "Dev Debug", {item = tostring("Disabled")}) 
         TriggerClientEvent('hud:enabledebug', src)
     end
 end)

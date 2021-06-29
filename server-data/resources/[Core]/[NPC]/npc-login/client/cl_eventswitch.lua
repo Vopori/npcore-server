@@ -2,7 +2,7 @@ function Login.playerLoaded() end
 
 function Login.characterLoaded()
   -- Main events leave alone 
-  TriggerEvent("npc-base:playerSpawned")
+  TriggerEvent("npc-core:playerSpawned")
   TriggerEvent("loadedinafk")
   TriggerEvent("playerSpawned")
   TriggerServerEvent('character:loadspawns')
@@ -45,8 +45,8 @@ end
 function Login.characterSpawned()
 
   isNear = false
-  TriggerServerEvent('npc-base:sv:player_control')
-  TriggerServerEvent('npc-base:sv:player_settings')
+  TriggerServerEvent('npc-core:sv:player_control')
+  TriggerServerEvent('npc-core:sv:player_settings')
 
   TriggerServerEvent("TokoVoip:clientHasSelecterCharacter")
   TriggerEvent("spawning", false)
@@ -74,7 +74,7 @@ function Login.characterSpawned()
   end
   SetPedMaxHealth(PlayerPedId(), 200)
   SetPlayerMaxArmour(PlayerId(), 60)
-  runGameplay() -- moved from npc-base 
+  runGameplay() -- moved from npc-core 
   Spawn.isNew = false
 end
 RegisterNetEvent("npc-login:characterSpawned");

@@ -639,8 +639,8 @@ end
 --------------------------------------
 --------------------------------------
 
-RegisterNetEvent("npc-base:characterLoaded")
-AddEventHandler("npc-base:characterLoaded", function()
+RegisterNetEvent("npc-core:characterLoaded")
+AddEventHandler("npc-core:characterLoaded", function()
     TriggerServerEvent("trucker:returnCurrentJobs")
 end)
 

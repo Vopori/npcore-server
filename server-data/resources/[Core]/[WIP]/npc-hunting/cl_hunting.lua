@@ -393,14 +393,14 @@ end
 
 RegisterNetEvent('npc-hunting:sellItems')
 AddEventHandler('npc-hunting:sellItems', function(amount)
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     LocalPlayer:addCash(Player.id, amount)
 end)
 
 RegisterNetEvent('npc-hunting:PurchaseHuntingLicense')
 AddEventHandler('npc-hunting:PurchaseHuntingLicense', function()
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     local Player = LocalPlayer:getCurrentCharacter()
     if Player.cash >= 1500 then
         LocalPlayer:removeCash(Player.id, 1500)

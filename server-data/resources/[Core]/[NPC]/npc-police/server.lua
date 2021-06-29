@@ -64,7 +64,7 @@ end)
 RegisterServerEvent('police:targetCheckBank')
 AddEventHandler('police:targetCheckBank', function(target)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(target)
 	local char = user:getCurrentCharacter()
 	balance = user:getBalance()
   	local strng = " Bank: "..balance
@@ -75,14 +75,14 @@ end)
 -- RegisterNetEvent("policeimpound")
 -- AddEventHandler("policeimpound",function()
 -- 	local src = source
--- 	local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+-- 	local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 -- 	user:addMoney(100)
 -- end)
 
 RegisterServerEvent('checkLicensePlate')
 AddEventHandler('checkLicensePlate', function(oof)
 	local source = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 	local char = user:getCurrentCharacter()
 	local job = "Unemployed"
 	local message = ""
@@ -184,15 +184,15 @@ RegisterServerEvent('police:jailGranted')
 AddEventHandler('police:jailGranted', function(args)
 	local src = source
 	local player = tonumber(args[1])
-	local target = exports["npc-base"]:getModule("Player"):GetUser(player)
+	local target = exports["npc-core"]:getModule("Player"):GetUser(player)
 	local character = target:getCurrentCharacter()
 	local playerName = character.first_name .. ' ' .. character.last_name
 
-	local pdunit = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local pdunit = exports["npc-core"]:getModule("Player"):GetUser(src)
 	if not pdunit:getVar("job") == "police" then
 		local steamid, name = pdunit:getVar("name"), pdunit:getVar("steamid")
 
-		exports["npc-base"]:AddLog("Exploiter", pdunit, "User Attempted to jail player while not on pd", {target = playerName, cid = cid, time = tonumber(args[2]), src= src})
+		exports["npc-core"]:AddLog("Exploiter", pdunit, "User Attempted to jail player while not on pd", {target = playerName, cid = cid, time = tonumber(args[2]), src= src})
 		DropPlayer(src, "")
 
 		return
@@ -202,7 +202,7 @@ AddEventHandler('police:jailGranted', function(args)
 	local date = os.date("%c")
 	TriggerClientEvent("drawScaleformJail", -1,tonumber(args[2]),playerName,character.id,date)
 	TriggerEvent("npc:news:newConviction", {name = playerName, duration = time, charges = reason})
-	exports["npc-base"]:getModule("JobManager"):SetJob(target, "unemployed", true)
+	exports["npc-core"]:getModule("JobManager"):SetJob(target, "unemployed", true)
 end)
 
 
@@ -216,7 +216,7 @@ end)
 RegisterServerEvent('police:hasShotRecently')
 AddEventHandler('police:hasShotRecently', function(shotRecently, copId)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
 	local msg = string.format("%s has returned %s for GSR testing", character.id, shotRecently and "positive" or "negative")
 	
@@ -253,7 +253,7 @@ end)
 RegisterServerEvent("police:targetCheckInventory")
 AddEventHandler("police:targetCheckInventory", function(target, status)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(target)
 	local char = user:getCurrentCharacter()
 	TriggerClientEvent("server-inventory-open", source, "1", "ply-"..char.id)
 end)
@@ -262,9 +262,9 @@ end)
 RegisterServerEvent('police:SeizeCash')
 AddEventHandler('police:SeizeCash', function(target)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
-	local userz = exports["npc-base"]:getModule("Player"):GetUser(target)
+	local userz = exports["npc-core"]:getModule("Player"):GetUser(target)
 	if not user.job.name == 'police' then
 		return
 	end
@@ -377,7 +377,7 @@ RegisterServerEvent('bones:server:updateServer')
 AddEventHandler('bones:server:updateServer', function(bones)
 	local src = source
 
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getVar("character").id
 	local pastebones = json.encode(bones)
 	local bones = json.encode(bones)
@@ -388,7 +388,7 @@ end)
 -- RegisterServerEvent("Evidence:checkDna")
 -- AddEventHandler("Evidence:checkDna", function()
 -- 		local src = source
--- 		local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+-- 		local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 -- 		local char = user:getVar("character")
 -- 		local needsNewDna = false
 
@@ -428,7 +428,7 @@ end)
 RegisterServerEvent("police:setServerMeta")
 AddEventHandler("police:setServerMeta", function(health, armour, thirst, hunger)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	if user ~= false then
 		local characterId = user:getCurrentCharacter().id
 		meta = { 
@@ -446,7 +446,7 @@ end)
 RegisterServerEvent('police:SetMeta')
 AddEventHandler('police:SetMeta', function()
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local cid = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {cid}, function(result)
         TriggerClientEvent("police:setClientMeta", src, json.decode(result[1].metaData))
@@ -458,7 +458,7 @@ end)
 RegisterServerEvent('server:alterStress')
 AddEventHandler('server:alterStress',function(positive, alteredValue)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local characterId = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM characters WHERE id = ?", {characterId}, function(result)
 		local myStress = result[1].stress_level
@@ -485,7 +485,7 @@ AddEventHandler("police:bill:player", function(TargetID, amount)
 	local src = source
 	local target = tonumber(TargetID)
 	local fine = tonumber(amount)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(target)
 	local characterId = user:getCurrentCharacter().id
 	if user ~= false then
 		if fine > 0 then
@@ -515,7 +515,7 @@ end)
 RegisterServerEvent('police:emsVehCheck')
 AddEventHandler('police:emsVehCheck', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	
 	if user:getVar("job") == "ems" or "doctor" then
 		TriggerClientEvent('emsGarage:Menu', src, true)
@@ -543,7 +543,7 @@ end)
 RegisterServerEvent('police:setEmoteData')
 AddEventHandler('police:setEmoteData', function(emoteTable)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	local emote = json.encode(emoteTable)
 	exports.ghmattimysql:execute("UPDATE characters SET `emotes` = @emotes WHERE id = @cid", {['emotes'] = emote, ['cid'] = char.id})
@@ -552,7 +552,7 @@ end)
 RegisterServerEvent('police:setAnimData')
 AddEventHandler('police:setAnimData', function(AnimSet)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	local metaData = json.encode(AnimSet)
 	exports.ghmattimysql:execute("UPDATE characters SET `meta` = @metaData WHERE id = @cid", {['metaData'] = metaData, ['cid'] = char.id})
@@ -561,7 +561,7 @@ end)
 RegisterServerEvent('police:getAnimData')
 AddEventHandler('police:getAnimData', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
 	exports.ghmattimysql:execute("SELECT meta FROM characters WHERE id = @cid", {['cid'] = char.id}, function(result)
@@ -583,7 +583,7 @@ end)
 RegisterServerEvent('police:getEmoteData')
 AddEventHandler('police:getEmoteData', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
 	exports.ghmattimysql:execute("SELECT emotes FROM characters WHERE id = @cid", {['cid'] = char.id}, function(result)
@@ -621,7 +621,7 @@ end)
 RegisterServerEvent('police:whitelist')
 AddEventHandler('police:whitelist', function(pSrc, arg, jobType)
 	print(pSrc, arg, jobType)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(pSrc)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(pSrc)
 	local char = user:getCurrentCharacter()
 
 	if jobType == "police" or jobType == "ems" then
@@ -629,7 +629,7 @@ AddEventHandler('police:whitelist', function(pSrc, arg, jobType)
 			if(result[1]) then
 				TriggerClientEvent("DoLongHudText", pSrc, 'This person is already on the list.', 2)
 			else
-				exports["npc-base"]:AddLog("HC Added Job","Character: "..char.id.." Changed Char: "..arg.." Job whitelisting: "..jobType.." Type: Added", {source = src, char = char.id})
+				exports["npc-core"]:AddLog("HC Added Job","Character: "..char.id.." Changed Char: "..arg.." Job whitelisting: "..jobType.." Type: Added", {source = src, char = char.id})
 
 				exports.ghmattimysql:execute("INSERT INTO jobs_whitelist (owner,cid,job,rank) VALUES (@owner,@cid,@job,@rank)",
 				{['owner'] = arg,['cid'] = arg,['job'] = jobType,['rank'] = 1})
@@ -645,7 +645,7 @@ end)
 RegisterServerEvent('police:remove')
 AddEventHandler('police:remove', function(arg,jobType)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
 	if jobType == "police" or jobType == "ems" then
@@ -653,7 +653,7 @@ AddEventHandler('police:remove', function(arg,jobType)
 			if(result[1]) then
 				TriggerClientEvent("DoLongHudText", src, 'This person is already on the list.', 2)
 			else
-				exports["npc-base"]:AddLog("HC Removed Job","Character: "..char.id.." Changed Char: "..arg.." Job whitelisting: "..jobType.." Type: Removed", {source = src, char = char.id})
+				exports["npc-core"]:AddLog("HC Removed Job","Character: "..char.id.." Changed Char: "..arg.." Job whitelisting: "..jobType.." Type: Removed", {source = src, char = char.id})
 
 				exports.ghmattimysql:execute("DELETE FROM jobs_whitelist WHERE owner = @owner, cid = @cid, job = @job",
 				{['owner'] = arg,['cid'] = arg,['job'] = jobType})
@@ -673,7 +673,7 @@ RegisterServerEvent("911")
 AddEventHandler("911", function(args)
 	local src = source
 
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local job = user:getVar("job")
 	local message = ""
@@ -689,12 +689,12 @@ AddEventHandler("911", function(args)
 	TriggerClientEvent("animation:phonecall", src)
 	TriggerClientEvent("chatMessage", src, "911 | " .. char.first_name .. " | " .. char.last_name .. " # " .. phonenumber, 3, tostring(message))
 
-	local users = exports["npc-base"]:getModule("Player"):GetUsers()
+	local users = exports["npc-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["npc-base"]:getModule("Player"):GetUser(v)
+		local user = exports["npc-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -712,7 +712,7 @@ RegisterServerEvent("311")
 AddEventHandler("311", function(args)
 	local src = source
 
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 	local job = user:getVar("job")
 	local message = ""
@@ -728,12 +728,12 @@ AddEventHandler("311", function(args)
 	TriggerClientEvent("animation:phonecall", src)
 	TriggerClientEvent("chatMessage", src, "311 | " .. char.first_name .. " | " .. char.last_name .. " # " .. phonenumber, { 33, 118, 255 }, tostring(message))
 
-	local users = exports["npc-base"]:getModule("Player"):GetUsers()
+	local users = exports["npc-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["npc-base"]:getModule("Player"):GetUser(v)
+		local user = exports["npc-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -760,7 +760,7 @@ AddEventHandler("911r", function(args)
 	if not args[1] or not tonumber(args[1]) then return end
 	local target = args[1]
 
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
 	local job = user:getVar("job")
@@ -779,12 +779,12 @@ AddEventHandler("911r", function(args)
 	end
 	TriggerClientEvent("animation:phonecall", src)
 
-	local users = exports["npc-base"]:getModule("Player"):GetUsers()
+	local users = exports["npc-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["npc-base"]:getModule("Player"):GetUser(v)
+		local user = exports["npc-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -808,7 +808,7 @@ AddEventHandler("311r", function(args)
 	if not args[1] or not tonumber(args[1]) then return end
 	local target = args[1]
 
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
 	local job = user:getVar("job")
@@ -827,12 +827,12 @@ AddEventHandler("311r", function(args)
 	end
 	TriggerClientEvent("animation:phonecall", src)
 
-	local users = exports["npc-base"]:getModule("Player"):GetUsers()
+	local users = exports["npc-core"]:getModule("Player"):GetUsers()
 
 	local emergencyPlayers = {}
 
 	for k,v in pairs(users) do
-		local user = exports["npc-base"]:getModule("Player"):GetUser(v)
+		local user = exports["npc-core"]:getModule("Player"):GetUser(v)
 		local job = user:getVar("job")
 
 		if job == "ems" or job == "police" then
@@ -852,7 +852,7 @@ end)
 RegisterServerEvent("police:dnaAsk")
 AddEventHandler("police:dnaAsk", function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	local dna = character.first_name.. ' ' ..character.last_name
 	TriggerClientEvent("evidence:addDnaSwab", src, dna)
@@ -865,7 +865,7 @@ end)
 RegisterServerEvent("police:targetCheckInventory")
 AddEventHandler("police:targetCheckInventory", function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	local cid = character.id
 	TriggerClientEvent("server-inventory-open", src, "1", 'ply-'..cid)
@@ -877,7 +877,7 @@ end)
  RegisterServerEvent('police:grantFirearms')
  AddEventHandler('police:grantFirearms', function(t)
  	local src = source
- 	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+ 	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
  	local character = user:getCurrentCharacter()
  	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Driver", "1"}, function(presearch)
  		if presearch[1] then
@@ -905,7 +905,7 @@ end)
 RegisterServerEvent('police:RevokeFirearms')
 AddEventHandler('police:RevokeFirearms', function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Firearm", "1"}, function(data)
 		if data[1] then
@@ -924,7 +924,7 @@ end)
 RegisterServerEvent('police:grantHunting')
 AddEventHandler('police:grantHunting', function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "0"}, function(data)
 		if data[1] then
@@ -947,7 +947,7 @@ end)
 RegisterServerEvent('police:RevokeHunting')
 AddEventHandler('police:RevokeHunting', function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "1"}, function(data)
 		if data[1] then
@@ -965,7 +965,7 @@ end)
 RegisterServerEvent('police:grantFishing')
 AddEventHandler('police:grantFishing', function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Fishing", "0"}, function(data)
 		if data[1] then
@@ -988,7 +988,7 @@ end)
 RegisterServerEvent('police:RevokeFishing')
 AddEventHandler('police:RevokeFishing', function(t)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(t)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(t)
 	local character = user:getCurrentCharacter()
 	exports.ghmattimysql:execute('SELECT * FROM user_licenses WHERE `owner`= ? AND `type` = ? AND `status` = ?', {character.id, "Hunting", "1"}, function(data)
 		if data[1] then
@@ -1004,7 +1004,7 @@ end)
 
 RegisterServerEvent("serials:insert")
 AddEventHandler("serials:insert", function(srcID, serial)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(srcID)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(srcID)
 	local ply = user:getCurrentCharacter()
 	local name = ply.first_name .. " " ..ply.last_name
 	exports.ghmattimysql:execute('INSERT INTO weapon_serials (serial, owner) VALUES (@serial, @owner)', {
@@ -1040,7 +1040,7 @@ end)
 
 RegisterServerEvent("doj:announce")
 AddEventHandler("doj:announce", function(srcID, args)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(srcID)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(srcID)
 	local characterId = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT `pass_type` FROM character_passes WHERE cid = @cid AND rank = 3", {['cid'] = characterId}, function(result)
 		if result[1] then
@@ -1058,7 +1058,7 @@ end)
 RegisterServerEvent("fire:event")
 AddEventHandler("fire:event", function(pJob, Passid)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid AND pass_type = @type AND rank >= 4", {['cid'] = Passid, ['type'] = pJob}, function(pre)
 		if pre[1] then
 			exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid AND pass_type = @type", {['cid'] = Passid, ['type'] = pJob}, function(data)

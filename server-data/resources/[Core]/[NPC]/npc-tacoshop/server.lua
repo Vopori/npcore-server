@@ -10,7 +10,7 @@ RegisterServerEvent('mission:finished')
 AddEventHandler('mission:finished', function(money)
     local src = source
     local player = GetPlayerName(src)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     if money ~= nil then
         user:addMoney(money)
         if money > 110 then

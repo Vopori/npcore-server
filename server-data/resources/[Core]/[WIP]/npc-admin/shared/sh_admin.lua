@@ -62,7 +62,7 @@ end
 
 function NPC.Admin.GetPlayerRank(self, user)
     if not IsDuplicityVersion() then
-        return exports["npc-base"]:getModule("LocalPlayer"):getVar("rank")
+        return exports["npc-core"]:getModule("LocalPlayer"):getVar("rank")
     else
         if not user then return false end
 
@@ -160,7 +160,7 @@ function NPC.Admin.IsValidUser(self, user)
 
     if not steamid or not license or not src then return false end
 
-    local util = exports["npc-base"]:getModule("Util")
+    local util = exports["npc-core"]:getModule("Util")
     if not util:IsSteamId(steamid) then return false end
 
     return true
@@ -348,7 +348,7 @@ function NPC.Admin.DumpCurrentPlayers(self)
     TriggerServerEvent("admin:dumpCurrentPlayers",NPC._Admin.Players,NPC._Admin.DiscPlayers)
 end
 
-AddEventHandler("npc-base:exportsReady", function()
-    exports["npc-base"]:addModule("Admin", NPC.Admin)
-    exports["npc-base"]:addModule("_Admin", NPC._Admin)
+AddEventHandler("npc-core:exportsReady", function()
+    exports["npc-core"]:addModule("Admin", NPC.Admin)
+    exports["npc-core"]:addModule("_Admin", NPC._Admin)
 end)

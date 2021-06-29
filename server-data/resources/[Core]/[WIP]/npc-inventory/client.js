@@ -114,16 +114,16 @@ function ScanJailContainers() {
     }
 }
 
-RegisterNetEvent('npc-base:playerSpawned')
-on('npc-base:playerSpawned', (broughtData) => {
+RegisterNetEvent('npc-core:playerSpawned')
+on('npc-core:playerSpawned', (broughtData) => {
 	let cid = exports.isPed.isPed("cid")
 	emitNet("server-request-update",cid)
 	SendNuiMessage(JSON.stringify({ response: "SendItemList", list: itemList}))
 	UpdateSettings();
 })
 
-RegisterNetEvent('npc-base:update:settings')
-on('npc-base:update:settings', (data) => {
+RegisterNetEvent('npc-core:update:settings')
+on('npc-core:update:settings', (data) => {
     SendNuiMessage(
         JSON.stringify({
             response: 'UpdateSettings',

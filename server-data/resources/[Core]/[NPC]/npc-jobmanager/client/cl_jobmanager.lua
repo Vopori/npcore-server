@@ -1,6 +1,6 @@
 RegisterNetEvent("npc-jobmanager:playerBecameJob")
 AddEventHandler("npc-jobmanager:playerBecameJob", function(job, name, notify)
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     LocalPlayer:setVar("job", job)
     if notify ~= false then 
         TriggerEvent("DoLongHudText", job ~= "unemployed" and "New Job: " .. tostring(name) or "You're now unemployed", 1) 
@@ -41,14 +41,14 @@ AddEventHandler("npc-jobmanager:playerBecameJob", function(job, name, notify)
    -- TriggerServerEvent("npc-items:updateID",job,exports["isPed"]:retreiveBusinesses())
 end)
 
-RegisterNetEvent("npc-base:characterLoaded")
-AddEventHandler("npc-base:characterLoaded", function(character)
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+RegisterNetEvent("npc-core:characterLoaded")
+AddEventHandler("npc-core:characterLoaded", function(character)
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     LocalPlayer:setVar("job", "unemployed")
 
 end)
 
-RegisterNetEvent("npc-base:exportsReady")
-AddEventHandler("npc-base:exportsReady", function()
-    exports["npc-base"]:addModule("JobManager", NPC.Jobs)
+RegisterNetEvent("npc-core:exportsReady")
+AddEventHandler("npc-core:exportsReady", function()
+    exports["npc-core"]:addModule("JobManager", NPC.Jobs)
 end)

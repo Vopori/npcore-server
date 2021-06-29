@@ -1,7 +1,7 @@
 RegisterServerEvent("npc-dirtymoney:attemptDirtyMoneyDrops")
 AddEventHandler("npc-dirtymoney:attemptDirtyMoneyDrops", function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local DirtyMoney = user:getDirtyMoney()
 
 	if DirtyMoney > 500 then
@@ -19,7 +19,7 @@ end)
 RegisterServerEvent("npc-dirtymoney:alterDirtyMoney")
 AddEventHandler("npc-dirtymoney:alterDirtyMoney", function(reason, amount)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local DirtyMoney = user:getDirtyMoney()
 
 	if reason == "ItemDrop" then
@@ -38,6 +38,6 @@ end)
 RegisterServerEvent("npc-dirtymoney:moneyPickup")
 AddEventHandler("npc-dirtymoney:moneyPickup", function(amount)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	user:addMoney((amount))
 end)

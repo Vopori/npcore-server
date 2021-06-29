@@ -92,6 +92,6 @@ Citizen.CreateThread(function()
         for k, v in pairs(safeLocations) do
             table.remove(safeLocations, k)
         end
-        print("^1[srp-robbery] Resetting All Stores / Safes^0")
+        print("^1[npc-robbery] Resetting All Stores/Safes!^0")
     end
 end)

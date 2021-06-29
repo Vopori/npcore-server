@@ -1,6 +1,5 @@
 -- Original creator https://forum.fivem.net/t/release-simple-enters-exits-system-updated-v-0-2/9968
 
-
 -- The array that will be filled with the server data
 -- If you want, you can put your array in this file. It should works fine.
 interiors = {

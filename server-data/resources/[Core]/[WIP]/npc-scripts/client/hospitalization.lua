@@ -141,8 +141,8 @@ function ICUscreen(dying)
 end
 
 function logout()
-	TriggerEvent("npc-base:clearStates")
-	exports["npc-base"]:getModule("SpawnManager"):Initialize()
+	TriggerEvent("npc-core:clearStates")
+	exports["npc-core"]:getModule("SpawnManager"):Initialize()
 end
 
 Citizen.CreateThread( function()

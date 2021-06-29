@@ -6,9 +6,6 @@
 --<Item>v_kitchen</Item>
 --<Item>v_office</Item>
 
-
-
-
 sofas = {
 	[1] = { ["object"] = "miss_rub_couch_01", ["price"] = 300, ["name"] = "Old Flowered Couch" },
 	[2] = { ["object"] = "prop_fib_3b_bench", ["price"] = 700, ["name"] = "3 Seat Chair" },

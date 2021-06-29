@@ -6,7 +6,7 @@ end)
 RegisterServerEvent('enteredMyVehicle')
 AddEventHandler('enteredMyVehicle', function(plate)
   local source = tonumber(source)
-  local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(source)
   local char = user:getCurrentCharacter()
   exports.ghmattimysql:execute("SELECT * FROM characters_cars WHERE cid = @cid AND license_plate = @license_plate", {
     ['@cid'] = char.id,
