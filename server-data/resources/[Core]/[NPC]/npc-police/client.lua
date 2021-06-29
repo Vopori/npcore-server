@@ -37,7 +37,7 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		local coords = GetEntityCoords(PlayerPedId())
-		TriggerServerEvent("npc-base:updatecoords",coords.x,coords.y,coords.z)
+		TriggerServerEvent("npc-core:updatecoords",coords.x,coords.y,coords.z)
 		Wait(13000)
 	end
 end)

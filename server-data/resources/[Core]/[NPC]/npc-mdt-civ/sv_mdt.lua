@@ -166,7 +166,7 @@ AddEventHandler("npc-mdt-civ:getReportDetailsById", function(query, _source)
 end)
 
 function GetCharacterName(source)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 	if user ~= false then
 		local characterId = user:getVar("character").id
 		local result = exports.ghmattimysql:executeSync('SELECT first_name, last_name FROM characters WHERE id = @id', {

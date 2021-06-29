@@ -5,8 +5,8 @@ local insideRooster = false
 local rank = 0
 
 function logout()
-    TriggerEvent("npc-base:clearStates")
-	exports["npc-base"]:getModule("SpawnManager"):Initialize()
+    TriggerEvent("npc-core:clearStates")
+	exports["npc-core"]:getModule("SpawnManager"):Initialize()
 end
 
 function IsNearLocation(list)
@@ -160,7 +160,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-AddEventHandler("npc-base:exportsReady", function()
+AddEventHandler("npc-core:exportsReady", function()
     Wait(1)
     isExportReady = true
 end)

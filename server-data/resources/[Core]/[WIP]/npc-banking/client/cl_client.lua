@@ -85,7 +85,7 @@ function openGui(a)
       end
     end
   end
-  local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   local cash = Player.cash
   bankanimation()
@@ -439,14 +439,14 @@ AddEventHandler("npc-banking:removeCash", function(amount)
 	})
 end)
 
-RegisterNetEvent("npc-base:addedMoney")
-AddEventHandler("npc-base:addedMoney", function(amt, total)
+RegisterNetEvent("npc-core:addedMoney")
+AddEventHandler("npc-core:addedMoney", function(amt, total)
   TriggerEvent("npc-banking:updateCash", total)
   TriggerEvent("npc-banking:addCash", amt)
 end)
 
-RegisterNetEvent("npc-base:removedMoney")
-AddEventHandler("npc-base:removedMoney", function(amt, total)
+RegisterNetEvent("npc-core:removedMoney")
+AddEventHandler("npc-core:removedMoney", function(amt, total)
   TriggerEvent("npc-banking:updateCash", total)
   TriggerEvent("npc-banking:removeCash", amt)
 end)

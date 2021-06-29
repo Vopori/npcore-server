@@ -10,7 +10,7 @@ AddEventHandler('character:loadspawns', function(cid, NewPlayer)
     local pussy = 0
     local number = math.random(1,88)
     local asshole = {}
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = char.id
     IsNewLogin = NewPlayer
@@ -114,7 +114,7 @@ end)
 RegisterServerEvent('hotel:upgradeApartment')
 AddEventHandler('hotel:upgradeApartment', function(cid, roomType, roomNumber)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
     for k, v in pairs(motels) do
         if v.owner == cid then
@@ -136,7 +136,7 @@ end)
 RegisterServerEvent("hotel:attempting")
 AddEventHandler("hotel:attempting", function(amount)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
     if (tonumber(user:getBalance()) >= tonumber(amount)) then
         user:removeBank(tonumber(amount))

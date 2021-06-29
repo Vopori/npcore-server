@@ -2,7 +2,7 @@ function AddLog(lType, user, log, data)
     if not lType then lType = "None" else lType = tostring(lType) end
     
     if lType == "Exploiter" then
-        exports["npc-base"]:getModule("Admin"):ExploitAlertDiscord(user, log)
+        exports["npc-core"]:getModule("Admin"):ExploitAlertDiscord(user, log)
     end
 
     local steamId = (user and type(user) ~= "string") and user["steamid"] or (user and user or "Unknown")

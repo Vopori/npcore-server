@@ -3,8 +3,8 @@ local activepolice = 0
 RegisterServerEvent('attemptduty')
 AddEventHandler('attemptduty', function(src, pJobType)
 	if src == nil or src == 0 then src = source end
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
-	local jobs = exports["npc-base"]:getModule("JobManager")
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
+	local jobs = exports["npc-core"]:getModule("JobManager")
 	local job = pJobType and pJobType or 'police'
 	jobs:SetJob(user, job, false, function()
 		TriggerClientEvent('nowCopGarage', src)
@@ -34,8 +34,8 @@ end)
 RegisterServerEvent('attemptdutym')
 AddEventHandler('attemptdutym', function(src)
 	if src == nil or src == 0 then src = source end
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
-	local jobs = exports["npc-base"]:getModule("JobManager")
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
+	local jobs = exports["npc-core"]:getModule("JobManager")
 	local job = 'ems'
 	jobs:SetJob(user, job, false, function()
 		TriggerEvent('badBlips:server:registerPlayerBlipGroup', src, 'ems')
@@ -47,7 +47,7 @@ end)
 RegisterServerEvent('reset:blips')
 AddEventHandler('reset:blips', function()
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local characterID = user:getCurrentCharacter().id
 	exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterID}, function(result)
         if result[1] then

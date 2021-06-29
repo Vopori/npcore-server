@@ -45,14 +45,14 @@ AddEventHandler('dispatch:svNotify', function(data)
 end)
 
 RegisterCommand('togglealerts', function(source, args, user)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     if user:getVar("job") == "police" or user:getVar("job") == "ems" then
         TriggerClientEvent('dispatch:toggleNotifications', source, args[1])
     end
 end)
 
 RegisterCommand("callsign", function(source, args)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     local characterId = user:getVar("character").id
     if user:getVar("job") == "police" or user:getVar("job") == "ems" then
 		exports.ghmattimysql:execute("UPDATE jobs_whitelist SET `callsign` = @callsign WHERE cid = @cid AND job = @job", {
@@ -68,7 +68,7 @@ end)
 
 RegisterServerEvent("dispatch:CallSign")
 AddEventHandler("dispatch:CallSign", function()
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
     local characterId = user:getVar("character").id
     if user:getVar("job") == "police" or user:getVar("job") == "ems" then
 		exports.ghmattimysql:execute('SELECT * FROM jobs_whitelist WHERE cid = ? AND job = ?', {characterId, user:getVar("job")}, function(callback)

@@ -133,7 +133,6 @@ end)
 -- cards are 124 - 128
 function PassCard(cardType)
   local answer = false
-  ----print(curhrs .. " is le hour ")
   if RobberyTimers[1] ~= nil then
     local timeframe = 0
     if curhrs >= 8 and curhrs < 10 then
@@ -215,8 +214,6 @@ AddEventHandler("robbery:scanLock", function(lockpick,cardType)
       TriggerEvent("DoLongHudText","Too late to rob this bank, Pepega.")
       return
     end
-
-    --print(nearbank,"LWEOWEKWEOEWFK")
     if banks["Bank"..nearbank] == nil then return end
     if not banks["Bank"..nearbank]["started"] then
       TriggerEvent("DoLongHudText","This is not ready to rob, Pepega.")
@@ -296,7 +293,7 @@ RegisterNetEvent("updateBanksNow")
 AddEventHandler("updateBanksNow", function(newBanks)
     if newBanks then
       banks = newBanks
-      ----print("We updated banks because of a timer")
+      ----print("We updated banks because of a timer.")
     end
 end)
 
@@ -305,7 +302,7 @@ AddEventHandler("robbery:scanbank", function(bankID,newBanks)
 
     if newBanks then
       banks = newBanks
-      ----print("We updated banks because of a lockpick / card")
+      ----print("We updated banks because of a lockpick/card.")
     end
 
     nearbank = bankID
@@ -341,7 +338,7 @@ end
 
 RegisterNetEvent("robbery:disablescans")
 AddEventHandler("robbery:disablescans", function()
-  --print("cancelled drawing")
+  --print("Cancelled drawing.")
   nearbank = 0
   Drawing = false
   DrawingV = false
@@ -352,7 +349,7 @@ AddEventHandler("robbery:disablescansServer", function(resetID)
   
 
   if resetID == nearbank then
-    --print("cancelled drawing due to server timer")
+    --print("Cancelled drawing due to server timer.")
     Drawing = false
     DrawingV = false
   end
@@ -395,12 +392,12 @@ AddEventHandler("robbery:giveleitem", function(confirmed,slotid)
           end
         end
       else
-        -- goods
+        -- Goods.
         GiveRareItem()
       end
-      --print("gif itemsz")
+      --print("Gift itemz.")
     else
-      --print("no item :) alrdy dun")
+      --print("Mo item :)! Already complete.")
     end
 end)
 
@@ -472,7 +469,7 @@ AddEventHandler("DrawBankMarkers", function(Door,Wood)
 
   if Wood and not Drawing then
     Drawing = true
-    --print("starting wood --print")
+    --print("Starting wood! --print")
     while Drawing do 
       Wait(1)
         DrawTextAndScan(x1,y1,z1, 1)
@@ -482,7 +479,6 @@ AddEventHandler("DrawBankMarkers", function(Door,Wood)
     end
 
   elseif not DrawingV and not Wood then
-    --print("starting vaulktoweopierghioj")
     DrawingV = true
     while DrawingV do 
       Wait(1)

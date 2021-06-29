@@ -197,7 +197,7 @@ function Login.NUICallback(data)
 
 	if data.action == "currentHover" then
 		local offset = vector2(data.x,data.y)
-		local coords = exports["npc-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
+		local coords = exports["npc-core"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
 	    local pedCaught = LocationInWorld(coords,LoginSafe.Cam)
 	    local pedData = findCharPed(pedCaught,true)
 
@@ -210,7 +210,7 @@ function Login.NUICallback(data)
 
 	if data.action == "singleClick" or data.action == "doubleClick" then
 	    local offset = vector2(data.x,data.y)
-	    local coords = exports["npc-base"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
+	    local coords = exports["npc-core"]:getModule("Util"):ScreenRelToWorld(GetCamCoord(LoginSafe.Cam), GetCamRot(LoginSafe.Cam,2),offset)
 	    local pedCaught = LocationInWorld(coords,LoginSafe.Cam)
 	   	local pedData = nil
 	    if data.safe then
@@ -249,8 +249,8 @@ function Login.NUICallback(data)
 	
 	if data.action == "deleteCharacter" then
 		Login.actionsBlocked = true
-		local events = exports["npc-base"]:getModule("Events")
-		events:Trigger("npc-base:deleteCharacter", data.actionData, function(deleted)
+		local events = exports["npc-core"]:getModule("Events")
+		events:Trigger("npc-core:deleteCharacter", data.actionData, function(deleted)
             Login.getCharacters(true)
         end)
 	end
@@ -258,7 +258,7 @@ function Login.NUICallback(data)
 	if data.action == "newCharacter" then
 		Login.actionsBlocked = true
 		local cData = data.actionData
-		local events = exports["npc-base"]:getModule("Events")
+		local events = exports["npc-core"]:getModule("Events")
 		local gender = 0 
 		if cData.gender == "F" then gender = 1 end
 		local chardata = {
@@ -271,7 +271,7 @@ function Login.NUICallback(data)
 		
         if not chardata then return end
 
-		events:Trigger("npc-base:createCharacter", chardata, function(created)
+		events:Trigger("npc-core:createCharacter", chardata, function(created)
             if not created then
 				TriggerEvent("DoLongHudText","There was an error while creating your character, value returned nil or false. Contact an administrator if this persists.",2) 
 				Login.CreatePlayerCharacterPeds(Login.CurrentClothing,true)
@@ -335,17 +335,17 @@ AddEventHandler("onResourceStop", function()
 	Login.ClearSpawnedPeds()
 end)
 
-RegisterNetEvent("npc-base:spawnInitialized")
-AddEventHandler("npc-base:spawnInitialized", function()
+RegisterNetEvent("npc-core:spawnInitialized")
+AddEventHandler("npc-core:spawnInitialized", function()
 	TriggerServerEvent("commands:reset:login")
-	TriggerServerEvent("npc-base:clearStates")
+	TriggerServerEvent("npc-core:clearStates")
 	Login.nativeStart()
 end)
 
-RegisterNetEvent("npc-base:relog")
-AddEventHandler("npc-base:relog", function(type)
+RegisterNetEvent("npc-core:relog")
+AddEventHandler("npc-core:relog", function(type)
 	TriggerServerEvent("commands:reset:login")
-	TriggerServerEvent("npc-base:clearStates")
+	TriggerServerEvent("npc-core:clearStates")
 	if type == "motel" then
 		Login.nativeStart()
 	end

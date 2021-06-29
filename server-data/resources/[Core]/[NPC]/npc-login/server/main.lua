@@ -9,7 +9,7 @@ end
 RegisterServerEvent("login:getCharModels")
 AddEventHandler("login:getCharModels", function(charlist, isReset)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 
     local list = ""
     for i=1,#charlist do
@@ -59,7 +59,7 @@ end)
 RegisterServerEvent("npc-login:licenses")
 AddEventHandler("npc-login:licenses", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getVar("character")
     exports.ghmattimysql:execute("INSERT INTO user_licenses (type, owner) VALUES (@type, @owner)", {['@type'] = "Firearm",['@owner'] = char.id})
     exports.ghmattimysql:execute("INSERT INTO user_licenses (type, owner, status) VALUES (@type, @owner, @status)", {['@type'] = "Driver", ['@owner'] = char.id, ['@status'] = "1"})
@@ -78,13 +78,13 @@ AddEventHandler("backpack:give:items", function()
     TriggerClientEvent("player:receiveItem", src, "sandwich", 2)
 end)
 
-RegisterServerEvent("npc-base:playerSessionStarted")
-AddEventHandler("npc-base:playerSessionStarted", function()
+RegisterServerEvent("npc-core:playerSessionStarted")
+AddEventHandler("npc-core:playerSessionStarted", function()
     local src = source
 
     Citizen.CreateThread(function()
         Citizen.Wait(600000)
-        local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+        local user = exports["npc-core"]:getModule("Player"):GetUser(src)
         if not user or not user:getVar("characterLoaded") then DropPlayer(src, "You timed out while choosing a charater!") return end
     end)
 end)

@@ -152,13 +152,13 @@ AddEventHandler("playerDropped", function(reason)
     end
 end)
 
-AddEventHandler("npc-base:characterLoaded", function(user, char)
+AddEventHandler("npc-core:characterLoaded", function(user, char)
     NPC.Jobs:SetJob(user, "unemployed", false)
 end)
 
 -- Need to think of a better way to do this, says no such export when resource is started
-AddEventHandler("npc-base:exportsReady", function()
-    exports["npc-base"]:addModule("JobManager", NPC.Jobs)
+AddEventHandler("npc-core:exportsReady", function()
+    exports["npc-core"]:addModule("JobManager", NPC.Jobs)
 end)
 
 local policebonus = 0
@@ -206,12 +206,12 @@ Citizen.CreateThread(function()
                 end
 
                 for src,data in pairs(tbl) do
-                    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+                    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
                     if user then
                         if tonumber(curTime) == tonumber(data.lastPayCheck) or tonumber(data.lastPayCheck) >= 480 then
                             NPC.Jobs.CurPlayerJobs[job][src].lastPayCheck = curTime
                             TriggerEvent("server:givepayJob", job, math.floor(payCheck), src)
-                            exports["npc-base"]:AddLog("Job Pay", user, "User recieved paycheck, amount: " .. tostring(payCheck))
+                            exports["npc-core"]:AddLog("Job Pay", user, "User recieved paycheck, amount: " .. tostring(payCheck))
                         else
 
                         end
@@ -228,8 +228,8 @@ RegisterServerEvent('jobssystem:jobs')
 AddEventHandler('jobssystem:jobs', function(job, src)
     if src == nil or src == 0 then src = source end
 
-    local jobs = exports["npc-base"]:getModule("JobManager")
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local jobs = exports["npc-core"]:getModule("JobManager")
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 
     if not user then return end
     if not jobs then return end
@@ -245,7 +245,7 @@ TriggerEvent('jobssystem:jobs', args[1], source)
 end)
 
 RegisterCommand('addwhitelist', function(source, args)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(tonumber(args[1]))
-    local jobs = exports["npc-base"]:getModule("JobManager")
+    local user = exports["npc-core"]:getModule("Player"):GetUser(tonumber(args[1]))
+    local jobs = exports["npc-core"]:getModule("JobManager")
     jobs:AddWhiteList(user, args[2], args[3])
 end)

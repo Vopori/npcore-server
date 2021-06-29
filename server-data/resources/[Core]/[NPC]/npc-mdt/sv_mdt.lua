@@ -1,7 +1,7 @@
 RegisterServerEvent("npc-mdt:Open")
 AddEventHandler("npc-mdt:Open", function(type)
 	local usource = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(usource)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(usource)
     local characterId = user:getVar("character").id
 	if type == "police" then
 		exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterId}, function(result)
@@ -366,7 +366,7 @@ end)
 -- RegisterServerEvent("npc-mdt:performVehicleSearchInFront")
 -- AddEventHandler("npc-mdt:performVehicleSearchInFront", function(query)
 -- 	local usource = source
--- 	local user = exports["npc-base"]:getModule("Player"):GetUser(usource)
+-- 	local user = exports["npc-core"]:getModule("Player"):GetUser(usource)
 --     local characterId = user:getVar("character").id
 -- 	exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = characterId}, function(result)
 -- 		if result[1].pass_type == 'police' or result[1].pass_type == 'DOJ' then
@@ -517,7 +517,7 @@ end)
 -- end)
 
 function GetCharacterName(source)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 	if user ~= false then
 		local characterId = user:getVar("character").id
 		local result = exports.ghmattimysql:executeSync('SELECT first_name, last_name FROM characters WHERE id = @id', {

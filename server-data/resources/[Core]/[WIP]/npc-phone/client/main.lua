@@ -595,7 +595,7 @@ end)
 
 
 RegisterNUICallback('btnGarage', function()
-  local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+  local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
   local Player = LocalPlayer:getCurrentCharacter()
   TriggerServerEvent("garages:CheckGarageForVeh", Player.id)
 end)
@@ -3490,11 +3490,11 @@ end)
 
 
 RegisterNUICallback('settingsResetToko', function()
-  TriggerEvent("npc-base:cl:player_reset","tokovoip")
+  TriggerEvent("npc-core:cl:player_reset","tokovoip")
 end)
 
 RegisterNUICallback('settingsResetControls', function()
-  TriggerEvent("npc-base:cl:player_control",nil)
+  TriggerEvent("npc-core:cl:player_control",nil)
 end)
 
 RegisterNetEvent('sendMessagePhoneN')

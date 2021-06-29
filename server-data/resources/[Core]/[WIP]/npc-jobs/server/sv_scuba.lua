@@ -1,14 +1,14 @@
 RegisterServerEvent('npc-scuba:checkAndTakeDepo')
 AddEventHandler('npc-scuba:checkAndTakeDepo', function()
 local src = source
-local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(400)
 end)
 
 RegisterServerEvent('npc-scuba:returnDepo')
 AddEventHandler('npc-scuba:returnDepo', function()
 local src = source
-local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     user:addMoney(200)
 end)
 
@@ -42,7 +42,7 @@ end)
 RegisterServerEvent('npc-scuba:paySalvage')
 AddEventHandler('npc-scuba:paySalvage', function(money)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     if money ~= nil then
         user:addMoney(tonumber(money))
     end

@@ -28,8 +28,8 @@ function Login.CreatePlayerCharacterPeds(characterModelData,isReset)
 
     Login.CurrentClothing = characterModelData
 
-    local events = exports["npc-base"]:getModule("Events")
-    events:Trigger("npc-base:fetchPlayerCharacters", nil, function(data)
+    local events = exports["npc-core"]:getModule("Events")
+    events:Trigger("npc-core:fetchPlayerCharacters", nil, function(data)
         if data.err then
             return
         end
@@ -168,22 +168,22 @@ AddEventHandler("login:CreatePlayerCharacterPeds", Login.CreatePlayerCharacterPe
 
 --[[
     Functions below: base attachment
-    Description: dealing with npc-base functionality in order to set/get the correct information for chars
+    Description: dealing with npc-core functionality in order to set/get the correct information for chars
 ]]--
 
 function Login.getCharacters(isReset)
-    local events = exports["npc-base"]:getModule("Events")
+    local events = exports["npc-core"]:getModule("Events")
     
     if not isReset then
         TransitionFromBlurred(500)
-        events:Trigger("npc-base:loginPlayer", nil, function(data)
+        events:Trigger("npc-core:loginPlayer", nil, function(data)
             if type(data) == "table" and data.err then
                 return
             end
         end)
     end
 
-    events:Trigger("npc-base:fetchPlayerCharacters", nil, function(data)
+    events:Trigger("npc-core:fetchPlayerCharacters", nil, function(data)
         if data.err then
             print("Found error in getting player Char")
             return
@@ -208,12 +208,12 @@ function Login.SelectedChar(data)
 
 	Login.ClearSpawnedPeds()
 	TriggerEvent("character:PlayerSelectedCharacter")
-	local events = exports["npc-base"]:getModule("Events")
-	events:Trigger("npc-base:selectCharacter", data.actionData, function(returnData)
+	local events = exports["npc-core"]:getModule("Events")
+	events:Trigger("npc-core:selectCharacter", data.actionData, function(returnData)
        
         if not returnData.loggedin or not returnData.chardata then sendMessage({err = {err = true, msg = "There was a problem logging in as that character, if the problem persists, contact an administrator <br/> Cid: " .. tostring(data.selectcharacter)}}) return end
 
-        local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+        local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
         LocalPlayer:setCurrentCharacter(returnData.chardata)
         local cid = LocalPlayer:getCurrentCharacter().id
         TriggerEvent('updatecid', cid)
@@ -223,7 +223,7 @@ function Login.SelectedChar(data)
         else
             deleteTrain()
 	        SetPlayerInvincible(PlayerPedId(), true)
-	        TriggerEvent("npc-base:firstSpawn")
+	        TriggerEvent("npc-core:firstSpawn")
             TriggerServerEvent("asset_portals:get:coords")
             TriggerServerEvent('npc-scoreboard:AddPlayer')
             TriggerServerEvent('npc-admin:AddPlayer')
@@ -267,7 +267,7 @@ function Login.setClothingForChar()
     end
 
     Login.Open = false
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
 
     if gender ~= 0 then
@@ -307,7 +307,7 @@ AddEventHandler("npc-login:finishedClothing", function(endType)
             SetNuiFocus(false, false)
             EnableAllControlActions(0)
             Login.DeleteCamera()
-            TriggerEvent("npc-base:playerSpawned")
+            TriggerEvent("npc-core:playerSpawned")
             TriggerServerEvent("character:loadspawns", exports["isPed"]:isPed("cid"), true)
             SetPlayerInvincible(PlayerId(), false)
             Citizen.Wait(500)

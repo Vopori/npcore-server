@@ -1,7 +1,7 @@
 RegisterServerEvent('oxydelivery:server')
 AddEventHandler('oxydelivery:server', function(money)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 
 	if user:getCash() >= money then
         user:removeMoney(money)
@@ -15,7 +15,7 @@ end)
 RegisterServerEvent('drugdelivery:server')
 AddEventHandler('drugdelivery:server', function(money)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(source)
 
 	if user:getCash() >= money then
         user:removeMoney(money)

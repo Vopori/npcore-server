@@ -9,7 +9,7 @@ PerformHttpRequest(DISCORD_WEBHOOK5, function(err, text, headers) end, 'POST', j
 RegisterServerEvent('bank:deposit')
 AddEventHandler('bank:deposit', function(amount, cid ,reason, statement)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   if (tonumber(user:getCash()) >= amount) then
     user:removeMoney(amount)
     user:addBank(amount)
@@ -26,7 +26,7 @@ end)
 RegisterServerEvent('bank:withdraw')
 AddEventHandler('bank:withdraw', function(amount, cid , reason, statement)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   if (tonumber(user:getBalance()) >= amount) then
     user:removeBank(amount)
@@ -43,8 +43,8 @@ end)
 
 RegisterServerEvent('bank:givemecash')
 AddEventHandler('bank:givemecash', function(sender, reciever, amount)
-  local user = exports["npc-base"]:getModule("Player"):GetUser(sender)
-  local player = exports["npc-base"]:getModule("Player"):GetUser(tonumber(reciever))
+  local user = exports["npc-core"]:getModule("Player"):GetUser(sender)
+  local player = exports["npc-core"]:getModule("Player"):GetUser(tonumber(reciever))
   if tonumber(amount) <= user:getCash() then
     user:removeMoney(amount)
     player:addMoney(amount)    
@@ -55,8 +55,8 @@ end)
 
 RegisterServerEvent('bank:transfer')
 AddEventHandler('bank:transfer', function(receiver, amount, cid, statement)
-  local user = exports["npc-base"]:getModule("Player"):GetUser(source)
-  local player = exports["npc-base"]:getModule("Player"):GetUser(tonumber(receiver))
+  local user = exports["npc-core"]:getModule("Player"):GetUser(source)
+  local player = exports["npc-core"]:getModule("Player"):GetUser(tonumber(receiver))
   local sname = GetPlayerName(_source)
   local tname = GetPlayerName(to)
   local identity = GetPlayerIdentifiers(_source)
@@ -77,7 +77,7 @@ AddEventHandler('bank:transfer', function(receiver, amount, cid, statement)
 end)
 
 RegisterCommand('cash', function(source, args)
-  local user = exports["npc-base"]:getModule("Player"):GetUser(source)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(source)
   local char = user:getCurrentCharacter()
   local cash = char.cash
   TriggerClientEvent('npc-banking:updateCash', source, cash, true)
@@ -86,7 +86,7 @@ end)
 RegisterServerEvent('bank:withdrawAmende')
 AddEventHandler('bank:withdrawAmende', function(amount)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   user:removeMoney(amount)
 end)
@@ -117,7 +117,7 @@ end)
 RegisterServerEvent('bank:BussinessDeposit')
 AddEventHandler("bank:BussinessDeposit", function(bussiness, amount, cid, reason, statement)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   if (tonumber(user:getCash()) >= tonumber(amount)) then
     exports.ghmattimysql:execute('SELECT * FROM group_banking WHERE `group_type`= ?', {bussiness}, function(data)
       if data[1] then
@@ -137,7 +137,7 @@ end)
 RegisterServerEvent('bank:BussinessWithdraw')
 AddEventHandler("bank:BussinessWithdraw", function(bussiness, amount, cid ,reason, statement)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   exports.ghmattimysql:execute('SELECT * FROM group_banking WHERE `group_type`= ?', {bussiness}, function(data)
     if data[1] then
       local updatedBal = data[1].bank - tonumber(amount)
@@ -155,7 +155,7 @@ end)
 RegisterServerEvent("bank:get:money")
 AddEventHandler("bank:get:money", function(bussiness)
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   exports.ghmattimysql:execute('SELECT * FROM character_passes WHERE `cid`= ?', {char.id}, function(pre)
     if pre[1] then
@@ -172,7 +172,7 @@ end)
 RegisterServerEvent("bank:getLogs")
 AddEventHandler("bank:getLogs", function()
   local srcID = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(srcID)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(srcID)
   local char = user:getCurrentCharacter()
   exports.ghmattimysql:execute('SELECT * FROM __banking_logs WHERE `cid`= ?', {char.id}, function(data)
     if data[1] then
@@ -184,7 +184,7 @@ end)
 RegisterServerEvent("bank:get:balance")
 AddEventHandler("bank:get:balance", function()
   local src = source
-  local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+  local user = exports["npc-core"]:getModule("Player"):GetUser(src)
   local char = user:getCurrentCharacter()
   Citizen.Wait(2000)
   TriggerClientEvent("npc-banking:updateBalance", src, char.bank)

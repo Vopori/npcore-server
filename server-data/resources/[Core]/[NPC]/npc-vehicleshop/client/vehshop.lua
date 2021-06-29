@@ -1505,7 +1505,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-AddEventHandler("npc-base:exportsReady", function()
+AddEventHandler("npc-core:exportsReady", function()
 	Wait(1)
 	isExportReady = true
 end)

@@ -1,7 +1,7 @@
 RegisterServerEvent("job:Pay")
 AddEventHandler("job:Pay", function(data,pay)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     
 end)
@@ -9,7 +9,7 @@ end)
 RegisterServerEvent("secondary:NewJobServer")
 AddEventHandler("secondary:NewJobServer", function(newjob)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
         exports.ghmattimysql:execute('INSERT INTO secondary_jobs (cid, job) VALUES (@cid, @job)', {
@@ -23,7 +23,7 @@ end)
 RegisterServerEvent("secondary:NewJobServerWipe")
 AddEventHandler("secondary:NewJobServerWipe", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
     exports.ghmattimysql:execute('DELETE FROM secondary_jobs WHERE cid = @cid', {

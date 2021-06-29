@@ -1570,7 +1570,7 @@ function logout()
     Citizen.Wait(1000)
     CleanUpArea()
     Citizen.Wait(1000)   
-	TriggerEvent("npc-base:relog", "motel")
+	TriggerEvent("npc-core:relog", "motel")
 	Citizen.Wait(1000)
 	DoScreenFadeIn(1500)
 end

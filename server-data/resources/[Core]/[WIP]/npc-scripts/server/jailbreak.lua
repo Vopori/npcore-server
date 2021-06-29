@@ -1,7 +1,7 @@
 RegisterServerEvent("updateJailTime")
 AddEventHandler("updateJailTime", function(minutes)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
     if minutes == 0 then
         TriggerClientEvent('endJailTime', src)
@@ -13,7 +13,7 @@ end)
 -- RegisterServerEvent("updateJailTimeMobster")
 -- AddEventHandler("updateJailTimeMobster", function(minutes)
 --     local src = source
---     local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+--     local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 -- 	local char = user:getCurrentCharacter()
 --         exports.ghmattimysql:execute("UPDATE `characters` SET `jail_time_mobster` = '" .. minutes .. "' WHERE `id` = '" .. char.id .. "'")
 -- end)
@@ -34,7 +34,7 @@ end)
 RegisterServerEvent("updateJailTimeMobster")
 AddEventHandler("updateJailTimeMobster", function(minutes)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
     if minutes == 0 then
         TriggerClientEvent('endJailTime', src)
@@ -47,7 +47,7 @@ end)
 RegisterServerEvent('jail:charecterFullySpawend')
 AddEventHandler('jail:charecterFullySpawend', function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local character = user:getCurrentCharacter()
     local playerName = character.first_name .. ' ' .. character.last_name
     
@@ -59,7 +59,7 @@ end)
 RegisterServerEvent("checkJailTime")
 AddEventHandler("checkJailTime", function(sendmessage)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 
     exports.ghmattimysql:execute("SELECT * FROM `characters` WHERE id = @cid", {['cid'] = char.id}, function(result)
@@ -75,7 +75,7 @@ end)
 RegisterServerEvent('jail:cuttime')
 AddEventHandler("jail:cuttime", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     exports.ghmattimysql:execute("SELECT * FROM `characters` WHERE id = @cid", {['cid'] = char.id}, function(data)
         local recent = tonumber(data[1].jail_time)
@@ -86,12 +86,12 @@ end)
 
 RegisterCommand('unjail', function(source, args)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
-    local target = exports["npc-base"]:getModule("Player"):GetUser(tonumber(args[1]))
+    local target = exports["npc-core"]:getModule("Player"):GetUser(tonumber(args[1]))
 
     if user:getVar("job") == 'police' or user:getVar("job") == 'doc' then
-        if tonumber(args[1]) and exports["npc-base"]:getModule("Player"):GetUser(tonumber(args[1])) then
+        if tonumber(args[1]) and exports["npc-core"]:getModule("Player"):GetUser(tonumber(args[1])) then
             TriggerClientEvent("endJailTime", (tonumber(args[1])))
             exports.ghmattimysql:execute("UPDATE `characters` SET `jail_time` = @time WHERE `id` = @cid", {['time'] = 0, ['cid'] = char.id})
         else
@@ -102,7 +102,7 @@ end)
 
 RegisterCommand('jail', function(source, args)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
 
     if user:getVar("job") == 'police' or user:getVar("job") == 'doc' then

@@ -104,7 +104,7 @@ end
 
 function NPC.Admin.Menu.DrawJobs(self, cmd, cb)
     WarMenu.OpenMenu("jobmenu")
-    local jobs = exports["npc-base"]:getModule("JobManager").ValidJobs;
+    local jobs = exports["npc-core"]:getModule("JobManager").ValidJobs;
     Citizen.CreateThread(function()
         while WarMenu.IsMenuOpened("jobmenu") do
             Citizen.Wait(0)

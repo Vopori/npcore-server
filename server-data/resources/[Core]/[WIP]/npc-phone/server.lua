@@ -31,7 +31,7 @@ end)
 RegisterNetEvent('Server:GetHandle')
 AddEventHandler('Server:GetHandle', function()
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 	local char = user:getCurrentCharacter()
     fal = "@" .. char.first_name .. "_" .. char.last_name
     local handle = fal
@@ -44,7 +44,7 @@ end)
 RegisterNetEvent('npc-phone:addContact')
 AddEventHandler('npc-phone:addContact', function(name, number)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local characterId = user:getVar("character").id
     local handle = handle
@@ -63,7 +63,7 @@ end)
 RegisterNetEvent('deleteContact')
 AddEventHandler('deleteContact', function(name, number)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local characterId = user:getVar("character").id
 
@@ -80,7 +80,7 @@ end)
 RegisterNetEvent('npc-phone:getContacts')
 AddEventHandler('npc-phone:getContacts', function()
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local characterId = user:getVar("character").id
 
@@ -121,7 +121,7 @@ end
 RegisterNetEvent('getNM')
 AddEventHandler('getNM', function(pNumber)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local characterId = user:getVar("character").id
     local pNumber = getNumberPhone(characterId)
@@ -132,7 +132,7 @@ end)
 RegisterNetEvent('npc-phone:deleteYP')
 AddEventHandler('npc-phone:deleteYP', function(number)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
     local myNumber = getNumberPhone(characterId)
     exports.ghmattimysql:execute('DELETE FROM phone_yp WHERE phoneNumber = @phoneNumber', {
@@ -194,7 +194,7 @@ AddEventHandler('npc-phone:callContact', function(cid, targetnumber, toggle)
     if not toggle then
         TriggerClientEvent('npc-phone:initiateCall', src)
         for _, player in ipairs(GetPlayers()) do
-            local user = exports["npc-base"]:getModule("Player"):GetUser(tonumber(player))
+            local user = exports["npc-core"]:getModule("Player"):GetUser(tonumber(player))
             local char = user:getVar("character")
             if char.id == targetIdentifier then
                 TriggerClientEvent('npc-phone:receiveCall', tonumber(player), targetnumber, src, getPhoneRandomNumber())
@@ -204,7 +204,7 @@ AddEventHandler('npc-phone:callContact', function(cid, targetnumber, toggle)
         TriggerClientEvent('npc-phone:initiateCall', src)
         
         for _, player in ipairs(GetPlayers()) do
-            local user = exports["npc-base"]:getModule("Player"):GetUser(tonumber(player))
+            local user = exports["npc-core"]:getModule("Player"):GetUser(tonumber(player))
             local char = user:getVar("character")
             if char.id == targetIdentifier then
                 TriggerClientEvent('npc-phone:receiveCall', tonumber(player), targetnumber, src, srcPhone)
@@ -306,7 +306,7 @@ AddEventHandler('npc-phone:sendSMS', function(cid, receiver, message)
     end)
     
     for _, player in ipairs(GetPlayers()) do
-        local user = exports["npc-base"]:getModule("Player"):GetUser(tonumber(player))
+        local user = exports["npc-core"]:getModule("Player"):GetUser(tonumber(player))
         local characterId = user:getVar("character").id
         if characterId ~= nil then
             if characterId == target then
@@ -320,7 +320,7 @@ end)
 RegisterNetEvent('npc-phone:serverGetMessagesBetweenParties')
 AddEventHandler('npc-phone:serverGetMessagesBetweenParties', function(sender, receiver, displayName)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getVar("character").id
     local mynumber = getNumberPhone(characterId)
     exports.ghmattimysql:execute("SELECT * FROM user_messages WHERE (sender = @sender AND receiver = @receiver) OR (sender = @receiver AND receiver = @sender) ORDER BY id ASC",
@@ -407,7 +407,7 @@ end)
 function getOrGeneratePhoneNumber (sourcePlayer, identifier, cb)
     local sourcePlayer = sourcePlayer
     local identifier = identifier
-    local user = exports["npc-base"]:getModule("Player"):GetUser(sourcePlayer)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(sourcePlayer)
     local char = user:getVar("character")
     local myPhoneNumber = getNumberPhone(char.id)
     if myPhoneNumber == '0' or myPhoneNumber == nil then
@@ -457,7 +457,7 @@ RegisterNetEvent('npc-phone:updatePhoneJob')
 AddEventHandler('npc-phone:updatePhoneJob', function(advert)
     --local handle = handle
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local mynumber = char.phone_number
 
@@ -529,7 +529,7 @@ end)
 RegisterServerEvent('racing-join-race')
 AddEventHandler('racing-join-race', function(identifier)
     local src = source
-    local player = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local player = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = player:getCurrentCharacter()
     local cid = char.id
     local playername = ""..char.first_name.." "..char.last_name..""
@@ -540,7 +540,7 @@ end)
 RegisterServerEvent('race:completed2')
 AddEventHandler('race:completed2', function(fastestLap, overall, sprint, identifier)
     local src = source
-    local player = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local player = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = player:getCurrentCharacter()
     local cid = char.id
     local playername = ""..char.first_name.." "..char.last_name..""
@@ -637,7 +637,7 @@ end)
 RegisterServerEvent('racing-save-map')
 AddEventHandler('racing-save-map', function(currentMap,name,description,distanceMap)
     local src = source
-    local player = exports['npc-base']:getModule("Player"):GetUser(src)
+    local player = exports['npc-core']:getModule("Player"):GetUser(src)
     local char = player:getCurrentCharacter()
     local playername = ""..char.first_name.." "..char.last_name..""
 
@@ -653,7 +653,7 @@ end)
 RegisterServerEvent('npc-phone:RemovePayPhoneMoney')
 AddEventHandler('npc-phone:RemovePayPhoneMoney', function()
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(25)
 end)
 
@@ -677,7 +677,7 @@ end)
 RegisterNetEvent('npc-phone:deleteYP')
 AddEventHandler('npc-phone:deleteYP', function(number)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = char.id
     local mynumber = getNumberPhone(cid)
@@ -691,7 +691,7 @@ end)
 -- RegisterServerEvent("stocks:clientvalueupdate")
 -- AddEventHandler("stocks:clientvalueupdate", function(table)
 --     local src = source
---     local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+--     local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 --     local char = user:getCurrentCharacter()
 --     local tableinsert =  json.encode(table)
 --     exports.ghmattimysql:execute("UPDATE characters SET stocks = @stock WHERE id = @cid",{
@@ -704,7 +704,7 @@ end)
 -- RegisterServerEvent("stocks:retrieve")
 -- AddEventHandler("stocks:retrieve", function()
 --     local src = source
---     local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+--     local user = exports["npc-core"]:getModule("Player"):GetUser(src)
 --     local char = user:getCurrentCharacter()
 
 --     exports.ghmattimysql:execute("SELECT stocks FROM characters WHERE id = @id", {['id'] = char.id}, function(result)
@@ -717,7 +717,7 @@ end)
 -- RegisterServerEvent("npc-phone:stockTradeAttempt")
 -- AddEventHandler("npc-phone:stockTradeAttempt", function(index, id, sending)
 --     local src = source
---     local user = exports["npc-base"]:getModule("Player"):GetUser(tonumber(id))
+--     local user = exports["npc-core"]:getModule("Player"):GetUser(tonumber(id))
 --     local char = user:getCurrentCharacter()
 
 --     if user ~= nil then
@@ -754,7 +754,7 @@ end)
 
 RegisterCommand("pnum", function(source, args, rawCommand)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getVar("character")
     local srcPhone = getNumberPhone(char.id)
     TriggerClientEvent('sendMessagePhoneN', src, srcPhone)
@@ -804,7 +804,7 @@ end)
 RegisterServerEvent('server:currentpasses')
 AddEventHandler('server:currentpasses', function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local ply = user:getCurrentCharacter()
     exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE cid = @cid", {['cid'] = ply.id}, function(result)
         if result[1] ~= nil then
@@ -820,7 +820,7 @@ end)
 RegisterServerEvent('server:givepass')
 AddEventHandler('server:givepass', function(pass_type, rank, cid)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local ply = user:getCurrentCharacter()
     local SrcName = ply.first_name .. " " ..ply.last_name
     exports.ghmattimysql:execute("SELECT * FROM character_passes WHERE pass_type = ? AND cid = ?", {pass_type, cid}, function(data)
@@ -871,7 +871,7 @@ end)
 RegisterServerEvent('server:gankGroup')
 AddEventHandler('server:gankGroup', function(groupid, amount)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     if user:getCash() >= tonumber(amount) then
         user:removeMoney(tonumber(amount))
         exports.ghmattimysql:execute("SELECT * FROM group_banking WHERE group_type = @id", {['id'] = groupid}, function(result)

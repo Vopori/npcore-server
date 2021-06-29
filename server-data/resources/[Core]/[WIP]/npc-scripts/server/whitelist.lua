@@ -115,7 +115,7 @@ function WhiteList.GetSteamId(src)
 end
 
 function WhiteList.IsBanned(src, callback)
-    exports["npc-base"]:getModule("Admin").DB:IsPlayerBanned(src, function(code, msg, unbandate)
+    exports["npc-core"]:getModule("Admin").DB:IsPlayerBanned(src, function(code, msg, unbandate)
         if not code then callback(true, "Error checking ban") return end
 
         if code == 0  then
@@ -167,7 +167,7 @@ function WhiteList.EmergencyPriority(src)
     local curPower = Queue.Exports:IsPriority(ids)
     if not curPower then return false end
 
-    local jobs = exports["npc-base"]:getModule("JobManager")
+    local jobs = exports["npc-core"]:getModule("JobManager")
 
     local emsCount = jobs:CountJob("ems")
     local pdCount = jobs:CountJob("police")

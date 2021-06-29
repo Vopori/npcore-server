@@ -144,7 +144,7 @@ Citizen.CreateThread(function()
 
     Citizen.Wait(60000)
 
-    if nearEntertainment() and exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "entertainer" then
+    if nearEntertainment() and exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "entertainer" then
 
       playerCount = GetClosestPlayers()
       local payment = math.ceil(8 * playerCount)
@@ -152,7 +152,7 @@ Citizen.CreateThread(function()
         payment = 50
       end
       TriggerServerEvent("server:givepayJob", "Entertainer Payment - Near Players = " .. playerCount, payment) 
-    elseif exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "news" then
+    elseif exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "news" then
       local dist = 0
       if lastBlip.x then
         dist = #(GetEntityCoords(PlayerPedId()) - vector3(lastBlip.x,lastBlip.y,lastBlip.z))
@@ -172,7 +172,7 @@ Citizen.CreateThread(function()
       end
       Citizen.Wait(2400000)
     else
-      if exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "entertainer" then
+      if exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "entertainer" then
         Citizen.Wait(300000)
       end
     end
@@ -199,7 +199,7 @@ Citizen.CreateThread(function()
         -- If we are within 10 units of a blip that is not our own, clear the blip and message the server to clear for everyone
         if #(vector2(pos.x, pos.y) - vector2(item.pos.x, item.pos.y)) < 50.0 then
           if item.jobType == "ems" then
-            if exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "ems" then
+            if exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "ems" then
               TriggerServerEvent('phone:assistRemove', item.id, item.jobType) -- Send message of clear to others
               clearBlip(item)
               if GetTimeDifference(curTime, item.timestamp) > 2000 then
@@ -211,7 +211,7 @@ Citizen.CreateThread(function()
               end
             end
           elseif item.jobType == "news" then 
-            if exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "news" then
+            if exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "news" then
               TriggerServerEvent('phone:assistRemove', item.id, item.jobType) -- Send message of clear to others
               clearBlip(item)
               if GetTimeDifference(curTime, item.timestamp) > 2000 then

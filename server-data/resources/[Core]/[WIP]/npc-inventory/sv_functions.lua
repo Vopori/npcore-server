@@ -18,7 +18,7 @@ end)
 RegisterServerEvent('people-search')
 AddEventHandler('people-search', function(target)
     local source = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(target)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(target)
     local characterId = user:getVar("character").id
 	TriggerClientEvent("server-inventory-open", source, "1", 'ply-'.. characterId)
 end)
@@ -26,8 +26,8 @@ end)
 RegisterServerEvent('Stealtheybread')
 AddEventHandler('Stealtheybread', function(target)
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
-    local targetply = exports["npc-base"]:getModule("Player"):GetUser(target)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
+    local targetply = exports["npc-core"]:getModule("Player"):GetUser(target)
     user:addMoney(targetply:getCash())
     targetply:removeMoney(targetply:getCash())
 end)
@@ -37,7 +37,7 @@ RegisterNetEvent('npc-weapons:getAmmo')
 AddEventHandler('npc-weapons:getAmmo', function()
     local ammoTable = {}
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     exports.ghmattimysql:execute("SELECT type, ammo FROM characters_weapons WHERE id = @id", {['id'] = char.id}, function(result)
         for i = 1, #result do
@@ -54,7 +54,7 @@ end)
 RegisterNetEvent('npc-weapons:updateAmmo')
 AddEventHandler('npc-weapons:updateAmmo', function(newammo,ammoType,ammoTable)
     local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     exports.ghmattimysql:execute('SELECT ammo FROM characters_weapons WHERE type = @type AND id = @identifier',{['@type'] = ammoType, ['@identifier'] = char.id}, function(result)
         if result[1] == nil then
@@ -97,7 +97,7 @@ AddEventHandler("npc-inventory:RetreiveSettings", function()
     local user = GetPlayerIdentifiers(src)[1]
     exports.ghmattimysql:execute("SELECT `inventory_settings` FROM users WHERE hex_id = @hex_id", {['hex_id'] = user}, function(result)
         if (result[1]) then
-            TriggerClientEvent('npc-base:update:settings', src, result[1].inventory_settings)
+            TriggerClientEvent('npc-core:update:settings', src, result[1].inventory_settings)
         end
     end)
 end)
