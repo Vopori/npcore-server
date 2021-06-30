@@ -32,7 +32,7 @@ client_script "core/cl_core.lua"
 
 --[[=====SPAWNMANAGER=====]]--
 client_script "client/cl_spawnmanager.lua"
-server_script "sserver/sv_spawnmanager.lua"
+server_script "server/sv_spawnmanager.lua"
 
 --[[=====PLAYER=====]]--
 server_script "player/sv_player.lua"
