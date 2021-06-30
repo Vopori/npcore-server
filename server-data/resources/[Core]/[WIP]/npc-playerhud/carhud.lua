@@ -34,7 +34,7 @@ AddEventHandler('client:anchor', function()
         if vehModel ~= nil and vehModel ~= 0 then
             if DoesEntityExist(currVeh) then
                 if IsThisModelABoat(vehModel) or IsThisModelAJetski(vehModel) or IsThisModelAnAmphibiousCar(vehModel) or IsThisModelAnAmphibiousQuadbike(vehModel) then
-                	local finished = exports["srp-taskbar"]:taskBar(2000,"Toggling Anchor")
+                	local finished = exports["npc-taskbar"]:taskBar(2000,"Toggling Anchor")
 					if (finished ~= 100) then
 					    return
 					end
@@ -1111,8 +1111,8 @@ AddEventHandler("disableHUD", function(passedinfo)
 
 end)
 
-RegisterNetEvent("srp-jobmanager:playerBecameJob")
-AddEventHandler("srp-jobmanager:playerBecameJob", function(job, name)
+RegisterNetEvent("npc-jobmanager:playerBecameJob")
+AddEventHandler("npc-jobmanager:playerBecameJob", function(job, name)
 	if job ~= "police" then isCop = false else isCop = true end
 end)
 
@@ -2082,18 +2082,18 @@ function rangePercent(min, max, amt)
 	return (((amt - min) * 100) / (max - min)) / 100
 end
 
-RegisterNetEvent("srp-admin:currentDevmode")
-AddEventHandler("srp-admin:currentDevmode", function(devmode)
+RegisterNetEvent("npc-admin:currentDevmode")
+AddEventHandler("npc-admin:currentDevmode", function(devmode)
     currentValues["dev"] = devmode
 end)
 
-RegisterNetEvent("srp-admin:currentDebug")
-AddEventHandler("srp-admin:currentDebug", function(debugToggle)
+RegisterNetEvent("npc-admin:currentDebug")
+AddEventHandler("npc-admin:currentDebug", function(debugToggle)
     currentValues["devdebug"] = debugToggle
 end)
 
-RegisterNetEvent("srp-hud:changeRange")
-AddEventHandler("srp-hud:changeRange", function(pRange)
+RegisterNetEvent("npc-hud:changeRange")
+AddEventHandler("npc-hud:changeRange", function(pRange)
     currentValues["voice"] = pRange or 2
 end)
 

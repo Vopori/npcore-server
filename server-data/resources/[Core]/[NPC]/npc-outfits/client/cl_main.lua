@@ -878,7 +878,7 @@ function Save(save, close)
     TriggerEvent("ressurection:relationships:norevive")
     TriggerEvent("gangs:setDefaultRelations")
     TriggerEvent("facewear:update")
-    TriggerEvent('srp-weapons:getAmmo')
+    TriggerEvent('npc-weapons:getAmmo')
     CustomCamera('torso',true)
     TriggerEvent("e-blips:updateAfterPedChange",exports["isPed"]:isPed("myjob"))
     startingMenu = false

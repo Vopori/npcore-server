@@ -3,7 +3,7 @@ local plateChangesReturn = {}
 RegisterServerEvent('carfill:checkmoney')
 AddEventHandler('carfill:checkmoney', function(costs, location)
 	local src = source
-	local player = exports["srp-base"]:getModule("Player"):GetUser(src)
+	local player = exports["npc-core"]:getModule("Player"):GetUser(src)
 
 	if player:getCash() >= costs then
 		TriggerClientEvent("RefuelCarServerReturn", src)

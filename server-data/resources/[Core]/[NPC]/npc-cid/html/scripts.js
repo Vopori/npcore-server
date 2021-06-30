@@ -62,11 +62,11 @@ $(document).ready(function(){
 
     if(isFailed)
     {
-      $.post('http://srp-cid/error', JSON.stringify({  message: failureMessage}));
+      $.post('http://npc-cid/error', JSON.stringify({  message: failureMessage}));
     }
     else
     {
-      $.post('http://srp-cid/create', JSON.stringify({first: first, last: Last,job: Job,sex: Sex,dob: DOB }));
+      $.post('http://npc-cid/create', JSON.stringify({first: first, last: Last,job: Job,sex: Sex,dob: DOB }));
     }
      
   }
@@ -97,7 +97,7 @@ $(document).ready(function(){
 
      document.onkeyup = function (data) {
       if (data.which == 27 ) {
-        $.post('http://srp-cid/close', JSON.stringify({}));
+        $.post('http://npc-cid/close', JSON.stringify({}));
       }
     }
   });

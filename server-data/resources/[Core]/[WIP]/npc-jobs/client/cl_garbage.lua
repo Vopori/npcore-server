@@ -144,10 +144,10 @@
 --                                 if finished == 100 then
 --                                     TriggerServerEvent('npc-garbage:pay', jobCompleted)
 --                                     jobCompleted = false
---                                     SRPCore.Game.DeleteVehicle(truck)
+--                                     NPCCore.Game.DeleteVehicle(truck)
 --                                     for i=1,200,1 do 
 --                                         if DoesEntityExist(truck) then
---                                             SRPCore.Game.DeleteVehicle(truck)
+--                                             NPCCore.Game.DeleteVehicle(truck)
 --                                         else
 --                                             truckplate = false
 --                                             truckTaken = false

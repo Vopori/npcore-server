@@ -38,7 +38,7 @@ end)
 RegisterServerEvent('npc-doors:ForceLockState')
 AddEventHandler('npc-doors:ForceLockState', function(alterNum, state)
     NPC.DoorCoords[alterNum]["lock"] = state
-    TriggerClientEvent('SRP:Door:alterState', -1, alterNum, state)
+    TriggerClientEvent('NPC:Door:alterState', -1, alterNum, state)
 end)
 
 RegisterServerEvent('npc-doors:requestlatest')

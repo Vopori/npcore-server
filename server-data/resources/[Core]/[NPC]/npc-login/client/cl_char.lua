@@ -251,7 +251,7 @@ function Login.setClothingForChar()
       close = true
     })
     SetEntityVisible(PlayerPedId(), true)
-    TriggerEvent("srp:afk:update", true)
+    TriggerEvent("npc:afk:update", true)
     SetEntityCoords(PlayerPedId(),-3963.54,2013.95, 499.92)
     SetEntityHeading(PlayerPedId(),64.71)
     SetGameplayCamRelativeHeading(180.0)
@@ -297,7 +297,7 @@ AddEventHandler("npc-login:finishedClothing", function(endType)
     if distance <= 10 then
         SetEntityVisible(PlayerPedId(), false)
     	if endType == "Finished" then
-            TriggerEvent("srp:afk:update", false)
+            TriggerEvent("npc:afk:update", false)
             TriggerEvent("npc-raid-clothes:Spawning", false)
             Citizen.Wait(500)
             DoScreenFadeOut(100)

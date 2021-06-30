@@ -105,7 +105,7 @@ a:hover {
 }
 
 .notepad-container {
-  background-image: url("nui://srp-tuner/html/background.png");
+  background-image: url("nui://npc-tuner/html/background.png");
   margin-top:0;
   width: 800px;
   height: 700px;

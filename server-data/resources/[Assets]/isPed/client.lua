@@ -516,8 +516,8 @@ AddEventHandler('pagerStatus', function(PassedPagerStatus)
 end)
 
 --local myJob = exports["isPed"]:isPed("myJob")
-RegisterNetEvent("srp-jobmanager:playerBecameJob")
-AddEventHandler("srp-jobmanager:playerBecameJob", function(jobpassed, name, notify)
+RegisterNetEvent("npc-jobmanager:playerBecameJob")
+AddEventHandler("npc-jobmanager:playerBecameJob", function(jobpassed, name, notify)
 	job = jobpassed
     if not job then
         job = "None"
@@ -540,13 +540,13 @@ AddEventHandler('isPed:UpdateCash', function(newCash)
   cash = newCash
 end)
 
-RegisterNetEvent('srp-base:addedMoney')
-AddEventHandler('srp-base:addedMoney', function(blah,amount)
+RegisterNetEvent('npc-core:addedMoney')
+AddEventHandler('npc-core:addedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 
-RegisterNetEvent('srp-base:removedMoney')
-AddEventHandler('srp-base:removedMoney', function(blah,amount)
+RegisterNetEvent('npc-core:removedMoney')
+AddEventHandler('npc-core:removedMoney', function(blah,amount)
   cash = math.ceil(amount)
 end)
 

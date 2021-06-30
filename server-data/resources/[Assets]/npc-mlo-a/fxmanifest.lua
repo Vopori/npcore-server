@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 this_is_a_map 'yes'
 
-client_script "@srp-errorlog/client/cl_errorlog.lua"
+client_script "@npc-errorlog/client/cl_errorlog.lua"
 
 data_file 'DLC_ITYP_REQUEST' 'stream/misc/shell-mansion/v_int_44.ytyp'
 data_file 'DLC_ITYP_REQUEST' 'stream/slbBuildings/def_props.ytyp'

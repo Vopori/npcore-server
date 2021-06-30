@@ -10,7 +10,7 @@
 -- RegisterNetEvent('npc-garbage:pay')
 -- AddEventHandler('npc-garbage:pay', function(jobStatus)
 --     local _source = source
---     local xPlayer = SRPCore.GetPlayerFromId(_source)
+--     local xPlayer = NPCCore.GetPlayerFromId(_source)
 --     local identity = GetPlayerIdentifiers(_source)
 --     if jobStatus then
 --         if xPlayer ~= nil then
@@ -28,7 +28,7 @@
 -- AddEventHandler('npc-garbage:reward', function(rewardStatus)
 --     print("in server side")
 --     local _source = source
---     local xPlayer = SRPCore.GetPlayerFromId(source)
+--     local xPlayer = NPCCore.GetPlayerFromId(source)
 --     local matherino = math.random(0, 6)
 --     if rewardStatus then
 --         if matherino == 2 then

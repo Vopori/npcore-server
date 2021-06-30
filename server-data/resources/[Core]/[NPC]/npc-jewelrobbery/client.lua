@@ -53,7 +53,7 @@ Citizen.CreateThread(function ()
 								TaskPlayAnim(p, "missheist_jewel", "smash_case", 8.0, 1.0, -1, 2, 0, 0, 0, 0 ) 
 								Citizen.Wait(5000)
 								ClearPedTasksImmediately(p)
-								TriggerServerEvent('srp-jewelrobbery:AwardItems')
+								TriggerServerEvent('npc-jewelrobbery:AwardItems')
 							else
 								TriggerEvent('DoLongHudText', 'You are missing a weapon!', 2)							
 							end
@@ -109,10 +109,10 @@ AddEventHandler('av_vangelico:bomba', function()
 			DeleteObject(prop)
 			seguridad = false
 			FreezeEntityPosition(PlayerPedId(),false)
-			TriggerServerEvent("srp-doors:alterlockstate", 23)
-			TriggerServerEvent("srp-doors:alterlockstate", 24)
+			TriggerServerEvent("npc-doors:alterlockstate", 23)
+			TriggerServerEvent("npc-doors:alterlockstate", 24)
 			TriggerEvent('DoLongHudText', 'You started the robbery', 2)
-			TriggerEvent("srp-dispatch:jewelrobbery")
+			TriggerEvent("npc-dispatch:jewelrobbery")
 			TriggerServerEvent('av_vangelico:gas')
 			TriggerServerEvent('jewelrobbery:log')
 		end
@@ -182,10 +182,10 @@ end
 RegisterNetEvent('jewel:thermite')
 AddEventHandler('jewel:thermite', function()
 	if exports["isPed"]:isPed("countpolice") >= 4 then
-		local thermite = exports["srp-inventory"]:hasEnoughOfItem("thermite",1,false)
+		local thermite = exports["npc-inventory"]:hasEnoughOfItem("thermite",1,false)
 		if thermite then
 			TriggerEvent("inventory:removeItem","thermite", 1)   
-			if exports['srp-thermite']:startGame(25,1,13,500) then
+			if exports['npc-thermite']:startGame(25,1,13,500) then
 				seguridad = true
 				bomba = true
 				TriggerEvent('av_vangelico:bomba')
@@ -193,7 +193,7 @@ AddEventHandler('jewel:thermite', function()
 				local coords = GetEntityCoords(PlayerPedId())
 				FreezeEntityPosition(PlayerPedId(), false)
 				Citizen.Wait(1000)
-				exports['srp-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 15000)
+				exports['npc-thermite']:startFireAtLocation(coords.x, coords.y, coords.z - 1, 15000)
 				TriggerEvent('DoLongHudText', 'Washed!', 2)
 			end
 		else

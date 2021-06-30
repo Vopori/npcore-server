@@ -11,7 +11,7 @@ local robbableItems = {
 RegisterServerEvent('houseRobberies:removeLockpick')
 AddEventHandler('houseRobberies:removeLockpick', function()
  local source = tonumber(source)
- local user = exports["srp-base"]:getModule("Player"):GetUser(source)
+ local user = exports["npc-core"]:getModule("Player"):GetUser(source)
  TriggerClientEvent('inventory:removeItem', source, 'lockpick', 1)
  TriggerClientEvent('DoLongHudText',  source, 'The lockpick bent out of shape' , 1)
 end)
@@ -19,7 +19,7 @@ end)
 RegisterServerEvent('houseRobberies:giveMoney')
 AddEventHandler('houseRobberies:giveMoney', function()
  local source = tonumber(source)
- local user = exports["srp-base"]:getModule("Player"):GetUser(source)
+ local user = exports["npc-core"]:getModule("Player"):GetUser(source)
  local cash = math.random(350, 450)
  user:addMoney(cash)
  TriggerClientEvent('DoLongHudText',  source, 'You found a $'..cash , 1)
@@ -32,7 +32,7 @@ RegisterServerEvent('houseRobberies:searchItem')
 AddEventHandler('houseRobberies:searchItem', function()
  local source = tonumber(source)
  local item = {}
- local user = exports["srp-base"]:getModule("Player"):GetUser(source)
+ local user = exports["npc-core"]:getModule("Player"):GetUser(source)
  local gotID = {}
 
  for i=1, math.random(1, 2) do

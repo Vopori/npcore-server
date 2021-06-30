@@ -3397,26 +3397,26 @@ end
 function Voip(intPlayer, boolSend)
 end
 
-SRP = SRP or {}
-SRP.DataControls = SRP.DataControls or {}
+NPC = NPC or {}
+NPC.DataControls = NPC.DataControls or {}
 
-function SRP.DataControls.getBindTable()
+function NPC.DataControls.getBindTable()
 
 	local i = 1
 	local controlTable = {}
-	for k,v in pairs(SRP.Controls.Current) do
+	for k,v in pairs(NPC.Controls.Current) do
 		controlTable[i] = {k,v}
 		i = i+1
 	end
 
     return controlTable
 end
-SRP.SettingsData = SRP.SettingsData or {}
-SRP.Settings = SRP.Settings or {}
+NPC.SettingsData = NPC.SettingsData or {}
+NPC.Settings = NPC.Settings or {}
 
-SRP.Settings.Current = {}
+NPC.Settings.Current = {}
 -- Current bind name and keys
-SRP.Settings.Default = {
+NPC.Settings.Default = {
   ["tokovoip"] = {
     ["stereoAudio"] = true,
     ["localClickOn"] = true,
@@ -3432,10 +3432,10 @@ SRP.Settings.Default = {
   }
 
 }
-SRP.Controls = SRP.Controls or {}
-SRP.Controls.Current = {}
+NPC.Controls = NPC.Controls or {}
+NPC.Controls.Current = {}
 -- Current bind name and keys
-SRP.Controls.Default = {
+NPC.Controls.Default = {
   ["tokoptt"] = "caps",
   ["loudSpeaker"] = "-",
   ["distanceChange"] = "g",
@@ -3478,13 +3478,13 @@ SRP.Controls.Default = {
   ["helilockon"] = "space",
 }
 
-function SRP.SettingsData.getSettingsTable()
-  return SRP.Settings.Current
+function NPC.SettingsData.getSettingsTable()
+  return NPC.Settings.Current
 end
 
 RegisterNUICallback('settings', function()
-  local controls = SRP.DataControls.getBindTable()
-  local settings = SRP.SettingsData.getSettingsTable()
+  local controls = NPC.DataControls.getBindTable()
+  local settings = NPC.SettingsData.getSettingsTable()
   SendNUIMessage({openSection = "settings", currentControls = controls, currentSettings = settings})
 end)
 

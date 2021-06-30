@@ -275,8 +275,8 @@ AddEventHandler("emote:setEmotesFromDB", function(emotesResult)
     currentKeys = emotesResult
 end)
 
-RegisterNetEvent("srp-admin:currentDevmode")
-AddEventHandler("srp-admin:currentDevmode", function(devmode)
+RegisterNetEvent("npc-admin:currentDevmode")
+AddEventHandler("npc-admin:currentDevmode", function(devmode)
     dToggle = devmode
 end)
 
