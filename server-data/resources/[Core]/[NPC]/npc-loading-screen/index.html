@@ -7,7 +7,6 @@
     <script src="vue.min.js" type="text/javascript"></script>
     <link href="style.css" rel="stylesheet">
 
-
     <title>NPCore Character Selection</title>
 </head>
 
@@ -22,9 +21,11 @@
                 <img id="bak4" src="images/background5.jpg" style="top: -20%; opacity: 0" />
             </div>
         </div>
-            
-        <div id="logo">
-
+	<img src="./images/logo.png" id="logo" style="height: 350px; width: 350px;">
+	<div class="wrap logo-wrapper-1" id="logo"></div>
+	<div class="wrap logo-wrapper-2" id="logo"></div>
+	<div class="wrap logo-wrapper-3" id="logo"></div>
+	<div class="wrap logo-wrapper-4" id="logo"></div>
             <div class="log-containter" v-if="showLog">
                 <div class="log-header"></div>
                 <div id="log" class="log">Error Initializing Log</div>

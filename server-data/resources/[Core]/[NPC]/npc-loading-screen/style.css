@@ -69,17 +69,66 @@ body {
   background-color: #2b1d2c;
 }
 
+.logo-wrapper-1 {
+	height: 370px;
+	width: 370px;
+	border: 5px solid #fff;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 50%;
+	animation: rotate-1 4s infinite;
+}
+
+.logo-wrapper-2 {
+	height: 390px;
+	width: 390px;
+	border: 10px solid #fff;
+	border-bottom: none;
+	border-left: none;
+	border-top: none;
+	border-radius: 50%;
+	animation: rotate-1 3s infinite;
+}
+
+.logo-wrapper-3 {
+	height: 410px;
+	width: 410px;
+	border: 5px solid #002868;
+	border-bottom: none;
+	border-top: none;
+	border-right: none;
+	border-radius: 50%;
+	animation: rotate-1 3s infinite;
+}
+
+.logo-wrapper-4 {
+	height: 430px;
+	width: 430px;
+	border: 10px solid #09c4e6;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-radius: 50%;
+	animation: rotate-1 5s infinite;
+}
+
+@keyframes rotate-1 {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
 #logo {
-  width: 100vw;
-  height: 100vh;
-  background-image: url(images/logo.png);
-  background-size: 15%;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: 9999;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .log {
