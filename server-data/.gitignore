@@ -1,5 +1,7 @@
 citizen/system_resources/
+server-data/server.cfg
 /citizen
+/crashes
 /cache
 *.dll
 *.sym
@@ -12,5 +14,4 @@ citizen/system_resources/
 *.crt
 *.ini
 *.png
-*.sql
-server-data/icudtl.dat
+*.dat
