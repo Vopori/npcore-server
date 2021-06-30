@@ -1,4 +1,4 @@
-RegisterServerEvent("npc-base:sv:player_settings_set")
+RegisterServerEvent("npc-core:sv:player_settings_set")
 AddEventHandler("npc-core:sv:player_settings_set", function(settingsTable)
     local src = source
     NPC.DB:UpdateSettings(src, settingsTable, function(UpdateSettings, err)

@@ -167,7 +167,7 @@ rootMenuConfig =  {
     --     displayName = "DA Actions",
     --     icon = "#judge-actions",
     --     enableMenu = function()
-    --         return (not isDead and exports["npc-base"]:getModule("LocalPlayer"):getVar("job") == "district attorney")
+    --         return (not isDead and exports["npc-core"]:getModule("LocalPlayer"):getVar("job") == "district attorney")
     --     end,
     --     subMenus = { "police:cuff", "cuffs:uncuff", "general:escort", "police:frisk", "cuffs:checkinventory"}
     -- },

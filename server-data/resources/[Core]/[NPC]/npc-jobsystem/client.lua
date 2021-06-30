@@ -91,7 +91,7 @@ end)
 
 RegisterNetEvent('jobssystem:current')
 AddEventHandler('jobssystem:current', function(cb)
-  LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+  LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
   cb(LocalPlayer:getVar("job"))
 end)
 

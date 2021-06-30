@@ -3,7 +3,7 @@ local hmm = vehicleBaseRepairCost
 RegisterServerEvent('npc-bennys:attemptPurchase')
 AddEventHandler('npc-bennys:attemptPurchase', function(cheap, type, upgradeLevel)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     if type == "repair" then
         if user:getCash() >= hmm then
             user:removeMoney(hmm)
@@ -36,6 +36,6 @@ end)
 RegisterServerEvent('npc-bennys:repairciv')
 AddEventHandler('npc-bennys:repairciv', function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     user:removeMoney(450)
 end)

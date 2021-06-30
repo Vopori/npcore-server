@@ -4,7 +4,7 @@ description 'NPC-Doors'
 version '1.0.0'
 author 'whitewingz'
 
--- dependency "npc-base"
+-- dependency "npc-core"
 dependency "ghmattimysql"
 
 shared_script "shared/sh_doors.lua"

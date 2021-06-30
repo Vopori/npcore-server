@@ -912,7 +912,7 @@ function addBlips()
     TriggerEvent('hairDresser:ToggleHair')
 end
 
-AddEventHandler("npc-base:initialSpawnModelLoaded", function()
+AddEventHandler("npc-core:initialSpawnModelLoaded", function()
     TriggerServerEvent("clothing:checkIfNew")
 end)
 
@@ -966,7 +966,7 @@ end)
 
 RegisterNetEvent("npc-outfits:defaultReset")
 AddEventHandler("npc-outfits:defaultReset", function()
-    local LocalPlayer = exports["npc-base"]:getModule("LocalPlayer")
+    local LocalPlayer = exports["npc-core"]:getModule("LocalPlayer")
     local gender = LocalPlayer:getCurrentCharacter().gender
     Citizen.Wait(1000)
     if gender ~= 0 then

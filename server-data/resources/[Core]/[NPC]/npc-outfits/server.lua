@@ -16,7 +16,7 @@ RegisterServerEvent("npc-outfits:insert_character_current")
 AddEventHandler("npc-outfits:insert_character_current",function(data)
     if not data then return end
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
     if not characterId then return end
     checkExistenceClothes(characterId, function(exists)
@@ -48,7 +48,7 @@ AddEventHandler("npc-outfits:insert_character_face",function(data)
     if not data then return end
     local src = source
 
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -84,7 +84,7 @@ end)
 RegisterServerEvent("npc-outfits:get_character_face")
 AddEventHandler("npc-outfits:get_character_face",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -110,7 +110,7 @@ end)
 RegisterServerEvent("npc-outfits:get_character_current")
 AddEventHandler("npc-outfits:get_character_current",function(pSrc)
     local src = (not pSrc and source or pSrc)
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
     local cid = char.id
     if not cid then return end
@@ -129,7 +129,7 @@ end)
 RegisterServerEvent("npc-outfits:retrieve_tats")
 AddEventHandler("npc-outfits:retrieve_tats", function(pSrc)
     local src = (not pSrc and source or pSrc)
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute("SELECT * FROM playersTattoos WHERE identifier = @identifier", {['identifier'] = char.id}, function(result)
         if(#result == 1) then
@@ -145,7 +145,7 @@ end)
 RegisterServerEvent("npc-outfits:set_tats")
 AddEventHandler("npc-outfits:set_tats", function(tattoosList)
 	local src = source
-	local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+	local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local char = user:getCurrentCharacter()
 	exports.ghmattimysql:execute("UPDATE playersTattoos SET tattoos = @tattoos WHERE identifier = @identifier", {['tattoos'] = json.encode(tattoosList), ['identifier'] = char.id})
 end)
@@ -156,7 +156,7 @@ AddEventHandler("npc-outfits:get_outfit",function(slot)
     if not slot then return end
     local src = source
 
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -205,7 +205,7 @@ AddEventHandler("npc-outfits:set_outfit",function(slot, name, data)
     if not slot then return end
     local src = source
 
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local characterId = user:getCurrentCharacter().id
 
     if not characterId then return end
@@ -256,7 +256,7 @@ RegisterServerEvent("npc-outfits:remove_outfit")
 AddEventHandler("npc-outfits:remove_outfit",function(slot)
 
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
 
@@ -269,7 +269,7 @@ end)
 RegisterServerEvent("npc-outfits:list_outfits")
 AddEventHandler("npc-outfits:list_outfits",function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local slot = slot
     local name = name
@@ -296,7 +296,7 @@ end)
 RegisterServerEvent("clothing:checkIfNew")
 AddEventHandler("clothing:checkIfNew", function()
     local src = source
-    local user = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local cid = user:getCurrentCharacter().id
     local dateCreated = user:getCurrentCharacter()
 
@@ -328,7 +328,7 @@ end)
 RegisterServerEvent("clothing:checkMoney")
 AddEventHandler("clothing:checkMoney", function(askingPrice)
     local src = source
-    local target = exports["npc-base"]:getModule("Player"):GetUser(src)
+    local target = exports["npc-core"]:getModule("Player"):GetUser(src)
 
     if not askingPrice then
         askingPrice = 0
