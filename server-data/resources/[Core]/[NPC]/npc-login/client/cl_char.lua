@@ -241,7 +241,7 @@ end
 
 --[[
 	Functions below: Clothing handlers
-	Description: Attachted to npc-raid-clothes this deals with new chars or chars without clothes being selected and giveing the clothes
+	Description: Attachted to npc-outfits this deals with new chars or chars without clothes being selected and giveing the clothes
 ]]--
 
 function Login.setClothingForChar()
@@ -276,8 +276,8 @@ function Login.setClothingForChar()
         SetSkin(GetHashKey("mp_m_freemode_01"), true)
     end
 
-    TriggerEvent("npc-raid-clothes:openClothing")
-    TriggerEvent("npc-raid-clothes:inSpawn", true)
+    TriggerEvent("npc-outfits:openClothing")
+    TriggerEvent("npc-outfits:inSpawn", true)
     SetEntityHeading(PlayerPedId(),64.71)
 
     SetGameplayCamRelativeHeading(180.0)
@@ -292,13 +292,13 @@ AddEventHandler("npc-login:finishedClothing", function(endType)
     local pos = vector3(-3965.88,2014.55, 501.6)
     local distance = #(playerCoords - pos)
 
-    -- TriggerEvent("npc-raid-clothes:inSpawn", false)
+    -- TriggerEvent("npc-outfits:inSpawn", false)
 
     if distance <= 10 then
         SetEntityVisible(PlayerPedId(), false)
     	if endType == "Finished" then
             TriggerEvent("npc:afk:update", false)
-            TriggerEvent("npc-raid-clothes:Spawning", false)
+            TriggerEvent("npc-outfits:Spawning", false)
             Citizen.Wait(500)
             DoScreenFadeOut(100)
     		spawnChar()

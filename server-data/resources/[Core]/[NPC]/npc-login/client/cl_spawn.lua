@@ -131,9 +131,9 @@ function Login.nativeStart(AlreadySpawned)
 	RenderScriptCams(false, true, 1, true, true)
 
 	if not AlreadySpawned then
-		tatCategory = exports["npc-raid-clothes"]:GetTatCategs()
-		tattooHashList = exports["npc-raid-clothes"]:GetTatCategs()
-		Login.custompeds = exports["npc-raid-clothes"]:GetCustomSkins()
+		tatCategory = exports["npc-outfits"]:GetTatCategs()
+		tattooHashList = exports["npc-outfits"]:GetTatCategs()
+		Login.custompeds = exports["npc-outfits"]:GetCustomSkins()
 
 		--Prevent blur from getting stuck
 		while IsScreenblurFadeRunning() do

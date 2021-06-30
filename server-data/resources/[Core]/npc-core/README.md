@@ -202,7 +202,7 @@ ensure npc-core
 ensure npc-login
 ensure npc-scripts
 ensure npc-polyzone
-ensure npc-raid-clothes
+ensure npc-outfits
 ensure npc-apartments
 ensure npc-banking
 ensure npc-phone

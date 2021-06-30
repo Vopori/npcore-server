@@ -37,17 +37,17 @@ AddEventHandler('hotel:outfit', function(args,sentType)
 			for i = 1, #args do
 				strng = strng .. " " .. args[i]
 			end
-			TriggerEvent("npc-raid-clothes:outfits", sentType, id, strng)
+			TriggerEvent("npc-outfits:outfits", sentType, id, strng)
 		elseif sentType == 2 then
 			local id = args[2]
-			TriggerEvent("npc-raid-clothes:outfits", sentType, id)
+			TriggerEvent("npc-outfits:outfits", sentType, id)
 		elseif sentType == 3 then
 			local id = args[2]
 			TriggerEvent('item:deleteClothesDna')
 			TriggerEvent('InteractSound_CL:PlayOnOne','Clothes1', 0.6)
-			TriggerEvent("npc-raid-clothes:outfits", sentType, id)
+			TriggerEvent("npc-outfits:outfits", sentType, id)
 		else
-			TriggerServerEvent("npc-raid-clothes:list_outfits")
+			TriggerServerEvent("npc-outfits:list_outfits")
 		end
 	end
 end)
