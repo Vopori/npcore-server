@@ -425,7 +425,7 @@ body {
   width: 40%;
   line-height: 4vh;
   text-decoration: none;
-  background-color: #f2a365;
+  background-color: #bc4447;
   color: #222831;
   border-radius: 1vh;
   text-transform: uppercase;
@@ -434,11 +434,12 @@ body {
 }
 
 .new-character-create {
-  background-color: #95ef77;
+  background-color: #2ab7a9;
 }
 
 .new-character-submit:focus {
   outline: none;
+  background-color: #95ef77;
 }
 
 .delete-character-container {
@@ -484,7 +485,7 @@ body {
 }
 
 .delete-delete {
-  background-color: #f2a365;
+  background-color: #bc4447;
   width: 45%;
 }
 
