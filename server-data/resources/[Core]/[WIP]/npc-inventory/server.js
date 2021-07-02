@@ -858,3 +858,18 @@ onNet("inv:playerSpawned", () => {
     db(`DELETE FROM user_inventory2 WHERE quality like '0'`)
     console.log("[npc-inventory] Drops & broken items were purged.")
 });
+
+RegisterServerEvent("npc-inventory:update:settings")
+onNet("npc-inventory:update:settings", (data) => {
+    let src = source
+    let user = GetPlayerIdentifiers(src)[1]
+    let insert = {
+        ["holdToDrag"]: data.holdToDrag,
+        ["closeOnClick"]: data.closeOnClick,
+        ["ctrlMovesHalf"]: data.ctrlMovesHalf,
+        ["showTooltips"]: data.showTooltips,
+        ["enableBlur"]: data.enableBlur
+    }
+    let encode = json.encode(insert)
+    exports.ghmattimysql.execute(`UPDATE users set inventory_settings = ${encode} WHERE hex_id = ${user}`, {}, function() {});
+});
