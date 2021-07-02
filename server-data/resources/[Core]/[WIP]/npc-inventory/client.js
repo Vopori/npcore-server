@@ -122,8 +122,8 @@ on('npc-core:playerSpawned', (broughtData) => {
 	UpdateSettings();
 })
 
-RegisterNetEvent('npc-core:update:settings')
-on('npc-core:update:settings', (data) => {
+RegisterNetEvent('npc-base:update:settings')
+on('npc-base:update:settings', (data) => {
     let holdToDrag = data.holdToDrag;
     let closeOnClick = data.closeOnClick;
     let ctrlMovesHalf = data.ctrlMovesHalf;

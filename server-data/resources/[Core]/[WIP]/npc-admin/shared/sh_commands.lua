@@ -233,23 +233,6 @@ function cmd.RunCommand(caller, args)
     NPC.Admin:Log(log, caller)
 end
 
-RegisterCommand('setdev', function(source, args)
-    local src = source
-    local pid = tonumber(args[1])
-    local name = GetPlayerName(pid)
-    local rank = tostring(args[2])
-    
-    exports.ghmattimysql:execute("UPDATE users SET rank = @rank WHERE name = @name",
-    {["name"] = name, ['rank'] = rank}, function(result)
-        if result then
-            TriggerClientEvent('DoLongHudText', src, name .. " has been set as " .. rank, 1)
-            TriggerClientEvent('DoLongHudText', pid, "You have been set as : " .. rank, 1)
-        else
-            TriggerClientEvent('DoLongHudText', src, "Failed to set rank.", 1)
-        end
-    end)    
-end)
-
 function cmd.Init()
     if IsDuplicityVersion() then return end
 
