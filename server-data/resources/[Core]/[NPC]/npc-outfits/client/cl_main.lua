@@ -896,7 +896,7 @@ AddEventHandler('hairDresser:ToggleHair', function()
             end
         else
             item.blip = AddBlipForCoord(item[1], item[2], item[2])
-            SetBlipScale(item.blip, 0.7)
+            SetBlipScale(item.blip, 0.5)
             SetBlipSprite(item.blip, 71)
             SetBlipColour(item.blip, 10)
             SetBlipAsShortRange(item.blip, true)

@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
     for _, item in pairs(banks) do
       item.blip = AddBlipForCoord(item.x, item.y, item.z)
       SetBlipSprite(item.blip, item.id)
-      SetBlipScale(item.blip, 0.75)
+      SetBlipScale(item.blip, 0.5)
       SetBlipColour(item.blip, 2)
       SetBlipAsShortRange(item.blip, true)
       BeginTextCommandSetBlipName("STRING")
