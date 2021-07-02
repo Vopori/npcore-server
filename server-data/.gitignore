@@ -13,5 +13,4 @@ server-data/server.cfg
 *.key
 *.crt
 *.ini
-*.png
 *.dat
