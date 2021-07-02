@@ -57,7 +57,7 @@ Citizen.CreateThread(function()
     RefreshInterior(interiorID)
   end
 
-  -- exports["np-polyzone"]:AddBoxZone("casino_entrance", vector3(929.78, 43.5, 81.11), 9.8, 8, {
+  -- exports["PolyZone"]:AddBoxZone("casino_entrance", vector3(929.78, 43.5, 81.11), 9.8, 8, {
   --   heading=330,
   --   minZ=80.1,
   --   maxZ=82.9,
@@ -65,7 +65,7 @@ Citizen.CreateThread(function()
   --     id = "1",
   --   },
   -- })
-  -- exports["np-polyzone"]:AddBoxZone("casino_exit", vector3(1089.83, 206.84, -49.0), 4, 4, {
+  -- exports["PolyZone"]:AddBoxZone("casino_exit", vector3(1089.83, 206.84, -49.0), 4, 4, {
   --   heading=0,
   --   minZ=-50.2,
   --   maxZ=-47.2,

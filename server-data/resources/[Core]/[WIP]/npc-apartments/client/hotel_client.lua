@@ -587,7 +587,7 @@ function doSpawn(array)
 			tableid = i,
 		})
 	end
-	TriggerServerEvent("np-shops:getCharecter")
+	TriggerServerEvent("npc-shops:getCharecter")
 	-- /halt script fill html and allow selection.
 end
 
