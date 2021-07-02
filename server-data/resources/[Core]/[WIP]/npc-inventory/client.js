@@ -122,16 +122,21 @@ on('npc-core:playerSpawned', (broughtData) => {
 	UpdateSettings();
 })
 
-RegisterNetEvent('npc-core:update:settings')
-on('npc-core:update:settings', (data) => {
+RegisterNetEvent('npc-base:update:settings')
+on('npc-base:update:settings', (data) => {
+    let holdToDrag = data.holdToDrag;
+    let closeOnClick = data.closeOnClick;
+    let ctrlMovesHalf = data.ctrlMovesHalf;
+    let showTooltips = data.showTooltips;
+    let enableBlur = data.enableBlur;
     SendNuiMessage(
         JSON.stringify({
             response: 'UpdateSettings',
-            holdToDrag: data.holdToDrag,
-            closeOnClick: data.closeOnClick,
-            ctrlMovesHalf: data.ctrlMovesHalf,
-            showTooltips: data.showTooltips,
-            enableBlur: data.enableBlur,
+            holdToDrag: holdToDrag,
+            closeOnClick: closeOnClick,
+            ctrlMovesHalf: ctrlMovesHalf,
+            showTooltips: showTooltips,
+            enableBlur: enableBlur,
         }),
     );
 })
@@ -146,6 +151,7 @@ RegisterNuiCallbackType('Weight');
 on('__cfx_nui:Weight', (data, cb) => {
     personalWeight = data.weight;
 });
+
 RegisterNuiCallbackType('Close');
 on('__cfx_nui:Close', (data, cb) => {
     CloseGui(data.isItemUsed);
