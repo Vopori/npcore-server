@@ -69,6 +69,28 @@ body {
   background-color: #2b1d2c;
 }
 
+#npcf {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(images/logo.png);
+  background-size: 15%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+#logo {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 .logo-wrapper-1 {
 	height: 370px;
 	width: 370px;
@@ -94,7 +116,7 @@ body {
 .logo-wrapper-3 {
 	height: 410px;
 	width: 410px;
-	border: 5px solid #002868;
+	border: 5px solid #005f77;
 	border-bottom: none;
 	border-top: none;
 	border-right: none;
@@ -105,7 +127,7 @@ body {
 .logo-wrapper-4 {
 	height: 430px;
 	width: 430px;
-	border: 10px solid #09c4e6;
+	border: 10px solid #2ab7a9;
 	border-top: none;
 	border-left: none;
 	border-right: none;
@@ -120,15 +142,6 @@ body {
 	100% {
 		transform: rotate(360deg);
 	}
-}
-
-#logo {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 
 .log {
