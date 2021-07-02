@@ -310,3 +310,31 @@ AddEventHandler("commands:reset:login",function()
         "/fire"
     )
 end)
+
+-- Admin Rank Command (Testing Purposes).
+RegisterCommand('setdev', function(source, args)
+    local src = source
+    local pid = tonumber(args[1])
+    local rank = tostring(args[2])
+    local user = exports["npc-core"]:getModule("Player"):GetUser(pid)
+    
+    if not user then
+        TriggerClientEvent('DoLongHudText', src, 'This ID does not exist or is not online', 1)
+    else
+        local hex_id = user:getVar("hexid")    
+    
+        if hex_id ~= nil then
+            exports.ghmattimysql:execute("UPDATE users SET rank = @rank WHERE hex_id = @hex_id",
+            {["hex_id"] = hex_id, ['rank'] = rank}, function(result)
+                if result then
+                    TriggerClientEvent('DoLongHudText', src, GetPlayerName(pid) .. " has been set as " .. rank, 1)
+                    TriggerClientEvent('DoLongHudText', pid, "You have been set as : " .. rank, 1)
+                else
+                    TriggerClientEvent('DoLongHudText', pid, "Failed to set rank.", 1)
+                end
+            end)
+        else
+            TriggerClientEvent('DoLongHudText', src, 'This ID does not exist or is not online', 1)
+        end
+    end
+end)
