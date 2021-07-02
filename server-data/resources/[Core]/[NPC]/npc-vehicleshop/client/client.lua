@@ -512,6 +512,7 @@ Citizen.CreateThread(function()
 						label = "Browse Vehicle Shop",
 					}
 				},
+				job = "all"
 				distance = 2.0
 		})
 end)
