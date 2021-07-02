@@ -253,12 +253,12 @@ AddEventHandler('RunUseItem', function(itemid, slot, inventoryName, isWeapon)
     end
 
     if (itemid == "femaleseed") then
-       TriggerEvent("Evidence:stateSet:stateSet",4,1600)
+       TriggerEvent("Evidence:stateSet",4,1600)
        TriggerEvent("npc-weed:plantSeed", itemid)
     end
 
     if (itemid == "maleseed") then
-        TriggerEvent("Evidence:stateSet:stateSet",4,1600)
+        TriggerEvent("Evidence:stateSet",4,1600)
         TriggerEvent("npc-weed:plantSeed", itemid)
     end
 
