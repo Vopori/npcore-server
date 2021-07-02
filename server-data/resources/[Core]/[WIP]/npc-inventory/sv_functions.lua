@@ -76,21 +76,6 @@ AddEventHandler('npc-weapons:updateAmmo', function(newammo,ammoType,ammoTable)
     end)
 end)
 
-RegisterServerEvent("npc-inventory:update:settings")
-AddEventHandler("npc-inventory:update:settings", function(data)
-    local src = source
-    local user = GetPlayerIdentifiers(src)[1]
-    local insert = {
-        ["holdToDrag"] = data.holdToDrag,
-        ["closeOnClick"] = data.closeOnClick,
-        ["ctrlMovesHalf"] = data.ctrlMovesHalf,
-        ["showTooltips"] = data.showTooltips,
-        ["enableBlur"] = data.enableBlur
-    }
-    local encode = json.encode(insert)
-    exports.ghmattimysql:execute('UPDATE users SET inventory_settings = ? WHERE hex_id = ?', {encode, user})
-end)
-
 RegisterServerEvent("npc-inventory:RetreiveSettings")
 AddEventHandler("npc-inventory:RetreiveSettings", function()
     local src = source
