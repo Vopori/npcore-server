@@ -25,7 +25,7 @@ function playerTargetEnable()
     -- if imDead then
     --     return false
     -- end
-    
+
     if success then return end
 
     targetActive = true
@@ -39,7 +39,7 @@ function playerTargetEnable()
             if GetEntityType(entity) ~= 0 then
                 for _, model in pairs(Models) do
                     if _ == GetEntityModel(entity) then
-                        for k , v in ipairs(Models[_]["job"]) do 
+                        for k , v in ipairs(Models[_]["job"]) do
                             if v == "all" or v == exports["isPed"]:isPed("myJob") then
                                 if _ == GetEntityModel(entity) then
                                     if #(plyCoords - coords) <= Models[_]["distance"] then
@@ -87,23 +87,23 @@ function playerTargetEnable()
                                         	table.insert(newOptions,Bones[_]["options"][i])
                                         end
                                         SendNUIMessage({response = "validTarget", data = newOptions})
-    
+
                                         while success and targetActive do
                                             local plyCoords = GetEntityCoords(GetPlayerPed(-1))
                                             local hit, coords, entity = RayCastGamePlayCamera(7.0)
                                             local boneI = GetEntityBoneIndexByName(nearestVehicle, _)
-    
+
                                             DisablePlayerFiring(PlayerPedId(), true)
-    
+
                                             if (IsControlJustReleased(0, 24) or IsDisabledControlJustReleased(0, 24)) then
                                                 SetNuiFocus(true, true)
                                                 SetCursorLocation(0.5, 0.5)
                                             end
-    
+
                                             if #(plyCoords - coords) > Bones[_]["distance"] then
                                                 success = false
                                             end
-    
+
                                             Citizen.Wait(1)
                                         end
                                         SendNUIMessage({response = "leftTarget"})
@@ -117,7 +117,7 @@ function playerTargetEnable()
 
             for _, zone in pairs(Zones) do
                 if Zones[_]:isPointInside(coords) then
-                    for k , v in ipairs(Zones[_]["targetoptions"]["job"]) do 
+                    for k , v in ipairs(Zones[_]["targetoptions"]["job"]) do
                         if v == "all" or v == exports["isPed"]:isPed("myJob") then
                             if #(plyCoords - Zones[_].center) <= zone["targetoptions"]["distance"] then
 
@@ -135,11 +135,11 @@ function playerTargetEnable()
                                         SetCursorLocation(0.5, 0.5)
                                     elseif not Zones[_]:isPointInside(coords) or #(vector3(Zones[_].center.x, Zones[_].center.y, Zones[_].center.z) - plyCoords) > zone.targetoptions.distance then
                                     end
-        
+
                                     if not Zones[_]:isPointInside(coords) or #(plyCoords - Zones[_].center) > zone.targetoptions.distance then
                                         success = false
                                     end
-        
+
 
                                     Citizen.Wait(1)
                                 end
@@ -151,7 +151,7 @@ function playerTargetEnable()
             end
         end
 
-        
+
         Citizen.Wait(250)
     end
 end
