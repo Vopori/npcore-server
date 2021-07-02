@@ -541,6 +541,10 @@ body {
 .npclogo {
     animation: breathing 5s ease-out infinite;
     opacity: 0.8;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 }
 
 @keyframes breathing {
