@@ -63,4 +63,30 @@ RegisterCommand("atm", function(src, args, raw)
   TriggerEvent('bank:checkATM')
 end)
 
+RegisterCommand("tpm", function(source)
+	local WaypointHandle = GetFirstBlipInfoId(8)
+	
+	if DoesBlipExist(WaypointHandle) then
+		local waypointCoords = GetBlipInfoIdCoord(WaypointHandle)
+	
+		for height = 1, 1000 do
+			SetPedCoordsKeepVehicle(PlayerPedId(), waypointCoords["x"], waypointCoords["y"], height + 0.0)
+	
+			local foundGround, zPos = GetGroundZFor_3dCoord(waypointCoords["x"], waypointCoords["y"], height + 0.0)
+	
+			if foundGround then
+				SetPedCoordsKeepVehicle(PlayerPedId(), waypointCoords["x"], waypointCoords["y"], height + 0.0)
+	
+				break
+			end
+	
+			Citizen.Wait(5)
+		end
+	
+		TriggerEvent("DoShortHudText", "Teleported.", 1)
+	else
+		TriggerEvent("DoShortHudText", "Marker not found.", 1)
+	end
+end)
+
 
