@@ -498,7 +498,7 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	exports['bt-target']:AddBoxZone("vehshopmenu", vector3(-33.57, -1099.53, 25.42), 1.0, 1.0, {
+	exports['npc-target']:AddBoxZone("vehshopmenu", vector3(-33.57, -1099.53, 25.42), 1.0, 1.0, {
 			name="vehshopmenu",
 			heading=96.2,
 			debugPoly=false,
