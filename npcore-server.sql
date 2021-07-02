@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `characters_cars` (
 CREATE TABLE IF NOT EXISTS `player_vehicles` (
   `#` int(11) NOT NULL AUTO_INCREMENT,
   `steam` varchar(50) DEFAULT NULL,
-  `citizenid` varchar(50) DEFAULT NULL,
+  `cid` varchar(50) DEFAULT NULL,
   `vehicle` varchar(50) DEFAULT NULL,
   `hash` varchar(50) DEFAULT NULL,
   `mods` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   `status` text DEFAULT NULL,
   PRIMARY KEY (`#`),
   KEY `plate` (`plate`),
-  KEY `citizenid` (`citizenid`),
+  KEY `cid` (`cid`),
   KEY `steam` (`steam`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2432 DEFAULT CHARSET=utf8mb4;
 
