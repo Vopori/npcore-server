@@ -1025,7 +1025,7 @@ AddEventHandler('npc-outfits:ListOutfits', function(skincheck)
     menuData[#menuData + 1] = {
       title = skincheck[i].name,
       description = '',
-      action = 'np-ui:npc-outfits:changeOutfit',
+      action = 'npc-ui:npc-outfits:changeOutfit',
       key = i,
     }
   end

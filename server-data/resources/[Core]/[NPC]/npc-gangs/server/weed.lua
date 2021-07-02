@@ -3,7 +3,7 @@ local crops = {}
 RegisterServerEvent("weed:createplant")
 AddEventHandler("weed:createplant", function(x,y,z, seed)
     local src = source
-    local user = exports["np-base"]:getModule("Player"):GetUser(src)
+    local user = exports["npc-core"]:getModule("Player"):GetUser(src)
     local character = user:getCurrentCharacter()
     local xyz = x,y,z
 
