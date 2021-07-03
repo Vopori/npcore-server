@@ -1,4 +1,4 @@
-![image](https://cdn.discordapp.com/attachments/851633925624168479/856870904906252298/NPCore_V.1.0.png)
+![image](https://cdn.discordapp.com/attachments/860905633783480330/860913889313947658/NPCore_Discord_Header.png)
 ### Welcome 👋🏼,
 
 # 🛠️ Current Phase: Testing (Expect some issues).
@@ -22,5 +22,5 @@ Evolve, Network, & Manifest.
 The FiveM 🐌 NPCore Collective.
 <br>
 `Project lead by Jigara#3470 and the NPCore Collective, should the original owner ever decides to reach out!`
-# 💙 Donations: https://www.buymeacoffee.com/jigara
-![image](https://media.discordapp.net/attachments/850450997826420786/850809505956102244/NPCore_Header.png?width=1440&height=238)
+# 💙 Support NPCore: https://www.buymeacoffee.com/npcore 💙
+![image](https://cdn.discordapp.com/attachments/860133990580486154/860898305114636308/NPC_Header.png)
