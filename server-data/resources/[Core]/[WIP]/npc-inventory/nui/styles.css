@@ -113,10 +113,6 @@ body {
     margin-left: 32vh;
 }
 
-#move-amount:hover {
-    background-color: #47688a;
-}
-
 h2 {
     margin-top: -8px;
     font-size: 24px;
@@ -161,26 +157,24 @@ div.tooltip {
 
 div.usearea {
     margin-top: 20%;
-    background-color: #30475e;
+    background-color: #11a47c;
     color: rgba(220, 220, 220, 1);
 }
 
 div.usearea:hover {
-    background-color: #47688a;
+    background-color: #11a497;
 }
 
 
 div.CloseInv {
     margin-top: 20%;
-    background-color: #30475e;
+    background-color: #11a47c;
     color: rgba(220, 220, 220, 1);
 }
 
 div.CloseInv:hover {
-    background-color: #47688a;
+    background-color: #11a497;
 }
-
-
 
 input[type='number']::-webkit-outer-spin-button,
 input[type='number']::-webkit-inner-spin-button {
@@ -300,7 +294,7 @@ input[type='number']::-webkit-inner-spin-button {
     position: absolute;
     left: 0;
     bottom: 0;
-    background: #30475e;
+    background: #11a497;
     background-size: 100000% 100000%;
     pointer-events: none;
     border-bottom-left-radius: 4px;
@@ -361,7 +355,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapmain::-webkit-scrollbar-thumb {
-    background: #30475e !important;
+    background: #11a47c !important;
     border-radius: 3px;
 }
 
@@ -370,7 +364,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .wrapsecondary::-webkit-scrollbar-thumb {
-    background: #30475e !important;
+    background: #11a47c !important;
     border-radius: 3px;
 }
 
@@ -507,9 +501,13 @@ img.smaller {
     text-align: center;
     color: rgba(220, 220, 220, 1);
     border-radius: 5px;
-    background-color: #30475e;
+    background-color: #11a47c;
     border: none;
     text-transform: uppercase;
+}
+
+#move-amount:hover {
+    background-color: #11a497;
 }
 
 .buttondude {
@@ -596,7 +594,7 @@ input[type='checkbox'] {
 }
 
 button {
-    background-color: #30475e;
+    background-color: #11a47c;
     border: none;
     border-radius: 5px;
     color: rgba(220, 220, 220, 1);
