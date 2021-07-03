@@ -21,6 +21,6 @@ Evolve, Network, & Manifest.
 <br>
 The FiveM 🐌 NPCore Collective.
 <br>
-`Project lead by Jigara#3470 and the NPCore Collective, should the original owner ever decides to reach out!`
-# 💙 Support NPCore: https://www.buymeacoffee.com/npcore 💙
+`Project lead by NPCore & The FiveM Collective, should original authors ever decide to reach out!`
+# 💙 Donations: https://www.buymeacoffee.com/npcore
 ![image](https://cdn.discordapp.com/attachments/860133990580486154/860898305114636308/NPC_Header.png)
