@@ -1,6 +1,6 @@
-![image](https://cdn.discordapp.com/attachments/851633925624168479/856870904906252298/NPCore_V.1.0.png)
+![image](https://cdn.discordapp.com/attachments/860905633783480330/860913889313947658/NPCore_Discord_Header.png)
 # Welcome to the NPCore-Server Wiki!
-# ![](https://cdn.discordapp.com/attachments/851633925624168479/854424619049156669/NPC.png)Base Manifest
+# ![](https://cdn.discordapp.com/attachments/860905633783480330/860951477773664296/NPCore.png)Base Manifest
 ```lua
 fx_version 'cerulean'
 games { 'gta5' }
@@ -69,7 +69,7 @@ server_export "getModule"
 server_export "addModule"
 server_export "AddLog"
 ```
-# ![](https://cdn.discordapp.com/attachments/851633925624168479/854424619049156669/NPC.png)Server.CFG
+# ![](https://cdn.discordapp.com/attachments/860905633783480330/860951477773664296/NPCore.png)Server.CFG
 ```lua
 #---------------------------------------------------------#
 #        Custom NoPixel Inspired Framework V.1.0     	  #
@@ -187,10 +187,10 @@ set temp_convar "Hey world!"
 #    ***[Please do not make unneccessary changes.]***	  #
 #---------------------------------------------------------#
 ```
-# ![](https://cdn.discordapp.com/attachments/851633925624168479/854424619049156669/NPC.png)Resources.CFG
+# ![](https://cdn.discordapp.com/attachments/860905633783480330/860951477773664296/NPCore.png)Resources.CFG
 ```lua
 #-----------------------------#
-#	       NPC Start	          #
+#	  NPC Start	      #
 #-----------------------------#
 #ensure npc-discord-whitelist
 #ensure npc-discord-perms
@@ -198,11 +198,11 @@ set temp_convar "Hey world!"
 ensure npc-mapdata
 ensure npc-loading-screen
 ensure npc-infinity
-ensure npc-core
+ensure npc-base
 ensure npc-login
 ensure npc-scripts
 ensure npc-polyzone
-ensure npc-outfits
+ensure npc-raid-clothes
 ensure npc-apartments
 ensure npc-banking
 ensure npc-phone
@@ -266,15 +266,15 @@ ensure npc-shops
 ensure npc-garages
 ensure npc-vehicles
 ensure npc-vehicleshop		  [#-- Work-In-Progress! --#]
-ensure npc-jobs			        [#-- Work-In-Progress! --#]
-ensure npc-drugs		        [#-- Work-In-Progress! --#]
+ensure npc-jobs			  [#-- Work-In-Progress! --#]
+ensure npc-drugs		  [#-- Work-In-Progress! --#]
 ensure npc-jewelrobbery		  [#-- Work-In-Progress! --#]
 #-----------------------------#
-#	         NPC END	          #
+#	   NPC END	      #
 #-----------------------------#
 
 #-----------------------------#
-#	        MISC START	        #
+#	  MISC START	      #
 #-----------------------------#
 #ensure wk_wrs2x
 ensure npc-emotes
@@ -289,11 +289,11 @@ ensure npc-weather-seasons
 ensure npc-weather-sync
 restart npc-ovalmap
 #-----------------------------#
-#	        MISC END	          #
+#	  MISC END	      #
 #-----------------------------#
 
 #-----------------------------#
-#	       ASSETS START         #
+#	 ASSETS START 	      #
 #-----------------------------#
 ensure npc-maps
 ensure npc-mlo-a
@@ -303,6 +303,6 @@ ensure npc-mlo-c
 #ensure npc-raid-cars
 #ensure npc-tow-trucks
 #-----------------------------#
-#	        ASSETS END 	        #
+#	  ASSETS END 	      #
 #-----------------------------#
 ```
