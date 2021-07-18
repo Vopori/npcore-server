@@ -1,4 +1,4 @@
-![image](https://cdn.discordapp.com/attachments/860905633783480330/860913889313947658/NPCore_Discord_Header.png)
+![image](https://cdn.discordapp.com/attachments/860905633783480330/866200481540866048/NPCore_Discord_Header.png)
 ### Welcome 👋🏼,
 
 # 🛠️ Current Phase: Testing (Expect some issues).
@@ -23,4 +23,4 @@ The FiveM 🐌 NPCore Collective.
 <br>
 `Project lead by NPCore & The FiveM Collective, should original authors ever decide to reach out!`
 # 💙 Donations: https://www.buymeacoffee.com/npcore
-![image](https://cdn.discordapp.com/attachments/860133990580486154/860898305114636308/NPC_Header.png)
+![image](https://cdn.discordapp.com/attachments/860905633783480330/866325981340631050/NPC_Header.png)
