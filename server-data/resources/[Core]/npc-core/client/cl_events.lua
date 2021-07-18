@@ -31,3 +31,20 @@ end)
 RegisterCommand("fml:admin-report2", function()
     TriggerServerEvent("np:fml:isInTime", false)
 end)
+
+
+function notify(text, type)    ----Notify
+    SendNUIMessage({
+        ['action'] = 'send',
+        ['text'] = text,
+        ['type'] = type
+
+    })
+end
+
+exports("Notify", notify)
+
+RegisterNetEvent("npc-notify:send")
+AddEventHandler('npc-notify:send', function(message, type)
+    exports[GetCurrentResourceName()]:Notify(message, type)
+end)

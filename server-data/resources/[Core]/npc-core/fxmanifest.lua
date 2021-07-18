@@ -56,6 +56,9 @@ server_script "server/sv_commands.lua"
 --[[=====Logs=====]]--
 server_script "server/sv_logs.lua"
 
+---[[Ui]]--
+ui_page 'html/notify.html'
+
 export "getModule"
 export "addModule"
 export "FetchVehProps"
