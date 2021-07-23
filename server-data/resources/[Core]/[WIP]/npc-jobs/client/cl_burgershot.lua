@@ -1,7 +1,7 @@
 RegisterNetEvent("npc-burgershot:startprocess3")
 AddEventHandler("npc-burgershot:startprocess3", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank > 0 then    
+    local myJob = exports["isPed"]:isPed("myJob")
+    if myJob == "burger_shot" then  
         if exports["npc-inventory"]:hasEnoughOfItem("rawpatty", 1) then 
             local dict = 'missfinale_c2ig_11'
             LoadDict(dict)
@@ -28,8 +28,8 @@ end)
 
 RegisterNetEvent("npc-burgershot:startfryer")
 AddEventHandler("npc-burgershot:startfryer", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank > 0 then  
+    local myJob = exports["isPed"]:isPed("myJob")
+    if myJob == "burger_shot" then
         if exports["npc-inventory"]:hasEnoughOfItem("potato", 1) then
             local dict = 'missfinale_c2ig_11'
             LoadDict(dict)
@@ -56,8 +56,8 @@ end)
 
 RegisterNetEvent("npc-burgershot:makeshake")
 AddEventHandler("npc-burgershot:makeshake", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank > 0 then
+    local myJob = exports["isPed"]:isPed("myJob")
+    if myJob == "burger_shot" then  
         if exports["npc-inventory"]:hasEnoughOfItem("milkshakeformula", 1) then
             local dict = 'mp_ped_interaction'
             LoadDict(dict)
@@ -84,8 +84,8 @@ end)
 
 RegisterNetEvent("npc-burgershot:getcola")
 AddEventHandler("npc-burgershot:getcola", function()
-    local rank = exports["isPed"]:GroupRank("burger_shot")
-    if rank > 0 then
+    local myJob = exports["isPed"]:isPed("myJob")
+    if myJob == "burger_shot" then  
         if exports["npc-inventory"]:hasEnoughOfItem("hfcs", 1) then   
             local dict = 'mp_ped_interaction'
             LoadDict(dict)
